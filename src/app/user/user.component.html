@@ -1,0 +1,13 @@
+<div class="landingPage">
+
+  <div class="userSelector">
+    <h1>Select User</h1>
+
+    <div class="user" id="admin">
+      <div class="userAdmin" *ngFor="let admin of adminList" (click)="showUserPage(admin)">
+        <p>{{ this.admin.id }} - {{ this.admin.name }} - {{ this.admin.role }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
