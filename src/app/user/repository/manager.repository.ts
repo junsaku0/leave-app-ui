@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {IManager} from "../manager/manager.model";
 import {Observable} from "rxjs";
+import {ManagerDetails} from "../model/manager-details.model";
 
 @Injectable({providedIn: 'root'})
 export class ManagerRepository{
@@ -23,6 +24,9 @@ export class ManagerRepository{
     return this.httpClient.get<any>(getManagerUrl, {headers: this.headers});
   }
 
-
+  public createManager(requestBody: ManagerDetails): Observable<any> {
+    const getManagerUrl = this.baseUrl;
+    return this.httpClient.post<any>(getManagerUrl, requestBody, {headers: this.headers});
+  }
 
 }
