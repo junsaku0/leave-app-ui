@@ -13,24 +13,19 @@ import {EmployeeDetails} from "../model/employee-details.model";
 })
 export class UserService {
 
-  constructor(private userRepository: UserRepository, private managerRepository: ManagerRepository) {
+  constructor(private userRepository: UserRepository) {
   }
 
   public fetchUserAdmin(): Observable<any> {
     return this.userRepository.getUserAdmin();
   }
 
-
-  public fetchManager(): Observable<any>{
-    return this.managerRepository.getManager();
+  public fetchUserManager(): Observable<any>{
+    return this.userRepository.getUserManager();
   }
 
-
-  public saveManager(requestBody: ManagerDetails) {
-    return this.userRepository.createManager(requestBody);
+  public fetchUserEmployee(): Observable<any>{
+      return this.userRepository.getUserEmployee();
   }
 
-  public saveEmployee(requestBody: EmployeeDetails) {
-    return this.userRepository.createEmployee(requestBody);
-  }
 }

@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {UserService} from "../service/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {RouterService} from "../service/router.service";
+import {ManagerService} from "../service/manager.service";
+import {EmployeeService} from "../service/employee.service";
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +16,8 @@ export class AdminComponent {
   public adminUser: any;
   public selectedRole: any;
 
-  constructor(private userService: UserService, public routerService: RouterService) {
+  constructor(private userService: UserService, private managerService: ManagerService,
+              private employeeService: EmployeeService, public routerService: RouterService) {
     this.adminUser = routerService.getQueryParams().user;
     this.createUserForm = new FormGroup<any>( {
       name: new FormControl(''),
@@ -30,7 +33,7 @@ export class AdminComponent {
     if (this.selectedRole == 'Manager') {
       const formValue = this.createUserForm.getRawValue();
 
-      this.userService.saveManager(formValue)
+      this.managerService.saveManager(formValue)
         .subscribe({
           next: (data) => {
             console.log('saved data:', data);
@@ -39,7 +42,7 @@ export class AdminComponent {
     } else if (this.selectedRole == 'Employee') {
       const formValue = this.createUserForm.getRawValue();
 
-      this.userService.saveEmployee(formValue)
+      this.employeeService.saveEmployee(formValue)
         .subscribe({
           next: (data) => {
             console.log('saved data:', data);
