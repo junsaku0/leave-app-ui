@@ -11,6 +11,7 @@ import {RouterService} from "./service/router.service";
 export class UserComponent implements OnInit{
 
   public adminList: any;
+  public manager: any;
 
   constructor(private userService: UserService, private routerService: RouterService) {
   }
@@ -34,5 +35,12 @@ export class UserComponent implements OnInit{
     console.log('Navigate to page:', user.name);
     this.routerService.navigate('/user/admin', {'user': user});
   }
+
+
+  public ShowManagerPage(user: any) {
+    console.log('Manager Page', user);
+    this.routerService.navigate('/user/manager', { 'user': user });
+  }
+
 
 }
