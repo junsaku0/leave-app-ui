@@ -30,7 +30,10 @@
 
       <div class="formItem" *ngIf="selectedRole == 'Employee'">
         <label>Manager: </label> <br />
-        <input type="text" formControlName="manager" placeholder="Manager">
+        <select formControlName="manager">
+          <option default>Manager</option>
+          <option *ngFor="let manager of managerList">{{ manager.name }}</option>
+        </select>
       </div>
 
       <div class="formItem">
