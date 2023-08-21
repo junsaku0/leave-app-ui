@@ -1,0 +1,49 @@
+<div class="content">
+  <div class="header">
+    <h1>Admin: {{ adminUser.name }}</h1>
+    <div class="actions">
+      <button>Create</button>
+      <button routerLink="user">Back</button>
+    </div>
+  </div>
+
+  <div class="body">
+    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+      <div class="formItem">
+        <label>Name: </label> <br />
+        <input type="text" formControlName="name" placeholder="Name">
+      </div>
+
+      <div class="formItem">
+        <label>Role: </label> <br />
+        <select #roles (change)="onSelected(roles.value)">
+          <option default>Role</option>
+          <option>Manager</option>
+          <option>Employee</option>
+        </select>
+      </div>
+
+      <div class="formItem">
+        <label>Hire Date: </label> <br />
+        <input type="date" formControlName="hireDate">
+      </div>
+
+      <div class="formItem" *ngIf="selectedRole == 'Employee'">
+        <label>Manager: </label> <br />
+        <select formControlName="manager">
+          <option default>Manager</option>
+          <option *ngFor="let manager of managerList">{{ manager.name }}</option>
+        </select>
+      </div>
+
+      <div class="formItem">
+        <label>Total Leave: </label> <br />
+        <input type="number" formControlName="totalLeave" placeholder="0">
+      </div>
+
+      <div class="formItem">
+        <button type="submit">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
