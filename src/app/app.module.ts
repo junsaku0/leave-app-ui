@@ -8,6 +8,8 @@ import { UserComponent } from './user/user.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ManagerComponent } from './user/manager/manager.component';
 
+import {ReactiveFormsModule} from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { ManagerComponent } from './user/manager/manager.component';
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
