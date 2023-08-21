@@ -17,10 +17,6 @@ export class AdminComponent {
 
   constructor(private userService: UserService, private routerService: RouterService) {
     this.adminUser = routerService.getQueryParams().user;
-    this.initializeFormGroup();
-  }
-
-  private initializeFormGroup() {
     this.createUserForm = new FormGroup<any>( {
       name: new FormControl(''),
       hireDate: new FormControl(''),
@@ -33,7 +29,6 @@ export class AdminComponent {
     console.log(this.createUserForm.getRawValue());
 
     if (this.selectedRole == 'Manager') {
-      this.createUserForm.removeControl('manager');
       const formValue = this.createUserForm.getRawValue();
 
       this.userService.saveManager(formValue)
@@ -56,6 +51,10 @@ export class AdminComponent {
 
   public onSelected(role: string) {
     this.selectedRole = role;
-    this.initializeFormGroup();
+    if (this.selectedRole == 'Manager') {
+      this.createUserForm.removeControl('manager', new FormControl(''));
+    } else if (this.selectedRole == 'Employee') {
+      this.createUserForm.addControl('manager', new FormControl(''));
+    }
   }
 }
