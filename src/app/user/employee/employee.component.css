@@ -1,0 +1,37 @@
+
+table{
+    width: 100%;
+    border-radius: 2px;
+    /*border: 1px solid black;*/
+    /*border-collapse: ;*/
+}
+ th{
+    border: 1px solid gray;
+     border-radius: 5px;
+     background-color: cornflowerblue;
+     padding:0.25rem;
+}
+ tr{
+     background-color:green;
+     border: 1px solid black;
+     border-radius: 5px;
+ }
+ td{
+     padding:0.75rem;
+ }
+.second-table{
+    margin-top: 5rem;
+}
+button{
+    margin-top:2rem;
+    border: 1px solid;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    color: white;
+    padding: 0.5rem 0.5rem;
+    &:hover{
+        background-color: dodgerblue;
+        cursor: pointer;
+    }
+}
+
