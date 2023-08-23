@@ -1,5 +1,5 @@
-<div class="flex flex-row flex-wrap">
-    <div class="flex align-items-center justify-content-center">
+<div>
+    <div>
         <h1>Welcome! Employee Name</h1>
         <a href="#">View All Leave</a>
     </div>
@@ -13,43 +13,30 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Reason</th>
-                <th>Time Unit</th>
+                <th> Total Leave Days</th>
                 <th>Status</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Ernest</td>
-                <td>8/22/2023</td>
-                <td>8/25/2023</td>
-                <td>Vacation Leave</td>
-                <td>Full day</td>
+                <td >Ernest</td>
+                <td >
+                    <input type="date"
+                           id="startDate"
+                    ></td>
+                <td >
+                    <input type="date"
+                           id="endDate"
+                    ></td>
+                <td >Type of Leave</td>
+                <td >Value of Total Days</td>
                 <td>For Approval</td>
+
             </tr>
             </tbody>
-            <table class="second-table">
-                <thead>
-                <tr>
-                    <th>Earned</th>
-                    <th>Balance</th>
-                </tr>
-
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Vacation Leave</td>
-                    <td>11.0 Day</td>
-                </tr>
-                </tbody>
-
-            </table>
-
+            <button type="submit" (click)="submitButton()">Submit</button>
+            <button type="reset">Clear</button>
         </table>
-        <div class="button">
-            <button>Submit</button>
-            <button>Cancel</button>
-        </div>
-
     </div>
 </div>
 
