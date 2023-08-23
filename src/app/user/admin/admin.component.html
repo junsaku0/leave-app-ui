@@ -1,3 +1,11 @@
+<div class="sidebar">
+  <ul>
+    <li><a (click)="showContent('createEmployee')">Create Employee</a></li>
+    <li><a (click)="showContent('viewEmployee')">View Employee</a></li>
+    <li><a (click)="showContent('viewManagers')">View Managers</a></li>
+    <li><a (click)="showContent('viewLeaves')">View Leaves</a></li>
+  </ul>
+</div>
 <div class="content">
   <div class="header">
     <h1>Admin: {{ adminUser.name }}</h1>
@@ -7,42 +15,88 @@
   </div>
 
   <div class="body">
-    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
-      <div class="formItem">
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" placeholder="Enter name">
-      </div>
+    <div *ngIf="currentContent === 'createEmployee'">
+      <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+        <div class="formItem">
+          <label for="name">Name:</label>
+          <input type="text" id="name" formControlName="name" placeholder="Enter name">
+        </div>
 
-      <div class="formItem">
-        <label for="role">Role:</label>
-        <select id="role" #roles (change)="onSelected(roles.value)">
-          <option disabled selected>Select role</option>
-          <option>Manager</option>
-          <option>Employee</option>
-        </select>
-      </div>
+        <div class="formItem">
+          <label for="role">Role:</label>
+          <select id="role" #role (change)="onSelected(role.value)" formControlName="role">
+            <option disabled selected>Select role</option>
+            <option>MANAGER</option>
+            <option>EMPLOYEE</option>
+          </select>
+        </div>
 
-      <div class="formItem">
-        <label for="hireDate">Hire Date:</label>
-        <input type="date" id="hireDate" formControlName="hireDate">
-      </div>
+        <div class="formItem" *ngIf="selectedRole == 'EMPLOYEE'">
+            <label>Manager: </label> <br />
+            <select formControlName="head">
+                <option default>Manager</option>
+                <option *ngFor="let manager of managerList">{{ manager.name }}</option>
+            </select>
+        </div>
 
-      <div class="formItem" *ngIf="selectedRole == 'Employee'">
-        <label>Manager: </label> <br />
-        <select formControlName="manager">
-          <option default>Manager</option>
-          <option *ngFor="let manager of managerList">{{ manager.name }}</option>
-        </select>
-      </div>
+        <div class="formItem">
+          <label for="hireDate">Hire Date:</label>
+          <input type="date" id="hireDate" formControlName="hireDate">
+        </div>
 
-      <div class="formItem">
-        <label for="totalLeave">Total Leave:</label>
-        <input type="number" id="totalLeave" formControlName="totalLeave" placeholder="Enter total leave">
-      </div>
+        <div class="formItem">
+          <label for="totalLeave">Total Leave:</label>
+          <input type="number" id="totalLeave" formControlName="totalLeave" placeholder="Enter total leave">
+        </div>
 
-      <div class="formItem">
-        <button type="submit">Create</button>
-      </div>
-    </form>
+        <div class="formItem">
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="currentContent === 'viewEmployee'">
+      <!-- View Employee content -->
+    </div>
+
+    <div *ngIf="currentContent === 'viewManagers'">
+      <h2>Manager List</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>Manager ID</th>
+          <th>Name</th>
+          <th>Hire Date</th>
+          <th>Total Leaves</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let manager of managerList">
+          <td>{{ manager.id }}</td>
+          <td>{{ manager.name }}</td>
+          <td>{{ manager.hireDate }}</td>
+          <td>{{ manager.totalLeave }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="currentContent === 'viewLeaves'">
+      <!-- View Leaves content -->
+      <table>
+        <thead>
+        <tr>
+          <th>Leave ID</th>
+          <th>Employee Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Reason</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Empty table rows -->
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
