@@ -12,11 +12,10 @@ export class EmployeeComponent  {
     endDate: any;
     totalLeaveDays: any;
 
+
     submitButton(){
         alert("I got clicked")
     }
-
-
 
 
 }
