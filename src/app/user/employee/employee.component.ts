@@ -39,7 +39,6 @@ export class EmployeeComponent  {
            alert("Both start and end date are required");
        }
 
-
    }
 
     calculateTotalLeaveNotIncludedDayOff (startDate: Date, endDate:Date): number {
