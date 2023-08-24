@@ -18,6 +18,7 @@ export class ManagerComponent implements OnInit {
       this.userManager = this.routerService.getQueryParams().user;
   }
 
+
   ngOnInit(): void {
     this.fetchManagerList();
   }

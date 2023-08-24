@@ -14,13 +14,8 @@ const routes: Routes = [
       { path: '', component: UserComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'manager', component: ManagerComponent },
-<<<<<<< HEAD
         {path: 'employee', component: EmployeeComponent}
 
-=======
-      { path: 'manager', component: ManagerComponent },
-      { path: 'employee', component: EmployeeComponent}
->>>>>>> 9d3a8eaca53c269321c57038cd4e46398948be81
 
     ]
   },

@@ -7,13 +7,8 @@ import { AdminComponent } from './user/admin/admin.component';
 import { UserComponent } from './user/user.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ManagerComponent } from './user/manager/manager.component';
-
-<<<<<<< HEAD
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-=======
-import {ReactiveFormsModule} from "@angular/forms";
 import { LeaveComponent } from './user/leave/leave.component';
->>>>>>> 9d3a8eaca53c269321c57038cd4e46398948be81
 import { EmployeeComponent } from './user/employee/employee.component';
 
 
@@ -24,20 +19,9 @@ import { EmployeeComponent } from './user/employee/employee.component';
     AdminComponent,
     UserComponent,
     ManagerComponent,
-<<<<<<< HEAD
     EmployeeComponent,
+      LeaveComponent
 
-
-=======
-    LeaveComponent,
-    EmployeeComponent
-  ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule
->>>>>>> 9d3a8eaca53c269321c57038cd4e46398948be81
   ],
     imports: [
         HttpClientModule,

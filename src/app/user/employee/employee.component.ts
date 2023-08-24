@@ -1,8 +1,8 @@
 import {Component, } from '@angular/core';
 import {Router} from "@angular/router";
-
-
-
+import {UserResponse} from "../model/user-response.model";
+import {RouterService} from "../service/router.service";
+import {EmployeeService} from "../service/employee.service";
 
 @Component({
   selector: 'app-employee',
@@ -10,13 +10,17 @@ import {Router} from "@angular/router";
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent  {
+    public userEmployee: any;
+    public page = 'viewMyLeave';
     startDate = "";
     endDate = "";
     totalLeaveDays:any;
     status = '';
     reason : string = '';
 
-
+    constructor(private employeeService: EmployeeService,private routerService:RouterService) {
+        this.userEmployee = this.routerService.getQueryParams().user;
+    }
 
    applyLeave(){
        try {
@@ -40,7 +44,6 @@ export class EmployeeComponent  {
        }
 
    }
-
     calculateTotalLeaveNotIncludedDayOff (startDate: Date, endDate:Date): number {
         let totalLeaveDays = 0;
         for (let currentDate = startDate; currentDate <= endDate; currentDate.setDate(currentDate.getDate()+1)){
@@ -75,4 +78,5 @@ export class EmployeeComponent  {
        this.status = '';
 
     }
+
 }
