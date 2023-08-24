@@ -19,6 +19,7 @@ export class LeaveComponent implements OnInit{
   constructor(private leaveService: LeaveService, public routersService: RouterService) {
 
   this.leaveForm = new FormGroup<any>({
+      userId: new FormControl(''),
       name: new FormControl(''),
       role: new FormControl(''),
     startDate: new FormControl(''),
@@ -33,6 +34,7 @@ export class LeaveComponent implements OnInit{
     }
 
   public OnSubmit(){
+      this.leaveForm.controls["userId"].setValue(this.userDetails.id);
       this.leaveForm.controls["name"].setValue(this.userDetails.name);
       this.leaveForm.controls["role"].setValue(this.userDetails.role);
     console.log(this.leaveForm.getRawValue())
