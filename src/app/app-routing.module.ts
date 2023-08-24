@@ -4,6 +4,7 @@ import {AdminComponent} from "./user/admin/admin.component";
 import {UserComponent} from "./user/user.component";
 import {ManagerComponent} from "./user/manager/manager.component";
 import {LeaveComponent} from "./user/leave/leave.component";
+import {EmployeeComponent} from "./user/employee/employee.component";
 
 const routes: Routes = [
   {
@@ -11,10 +12,12 @@ const routes: Routes = [
     children: [
       { path: '', component: UserComponent },
       { path: 'admin', component: AdminComponent },
-      { path: 'manager', component: ManagerComponent }
+      { path: 'manager', component: ManagerComponent },
+      { path: 'manager', component: ManagerComponent },
+      { path: 'employee', component: EmployeeComponent}
+
     ]
   },
-  { path: 'leave', component: LeaveComponent },
   {
     path: '**', redirectTo: 'user'
   }

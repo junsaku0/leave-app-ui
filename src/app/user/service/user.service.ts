@@ -6,6 +6,7 @@ import {ManagerRepository} from "../repository/manager.repository";
 
 import {ManagerDetails} from "../model/manager-details.model";
 import {EmployeeDetails} from "../model/employee-details.model";
+import {UserDetails} from "../model/user-details.model";
 
 
 @Injectable({
@@ -26,6 +27,10 @@ export class UserService {
 
   public fetchUserEmployee(): Observable<any>{
       return this.userRepository.getUserEmployee();
+  }
+
+  public saveUser(requestBody: UserDetails): Observable<any> {
+      return this.userRepository.createUser(requestBody);
   }
 
 }

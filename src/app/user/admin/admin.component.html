@@ -24,24 +24,24 @@
 
         <div class="formItem">
           <label for="role">Role:</label>
-          <select id="role" #roles (change)="onSelected(roles.value)">
+          <select id="role" #role (change)="onSelected(role.value)" formControlName="role">
             <option disabled selected>Select role</option>
-            <option>Manager</option>
-            <option>Employee</option>
+            <option>MANAGER</option>
+            <option>EMPLOYEE</option>
           </select>
+        </div>
+
+        <div class="formItem" *ngIf="selectedRole == 'EMPLOYEE'">
+            <label>Manager: </label> <br />
+            <select formControlName="head">
+                <option default>Manager</option>
+                <option *ngFor="let manager of managerList">{{ manager.name }}</option>
+            </select>
         </div>
 
         <div class="formItem">
           <label for="hireDate">Hire Date:</label>
           <input type="date" id="hireDate" formControlName="hireDate">
-        </div>
-
-        <div class="formItem" *ngIf="selectedRole == 'Employee'">
-          <label>Manager: </label> <br />
-          <select formControlName="manager">
-            <option default>Manager</option>
-            <option *ngFor="let manager of managerList">{{ manager.name }}</option>
-          </select>
         </div>
 
         <div class="formItem">

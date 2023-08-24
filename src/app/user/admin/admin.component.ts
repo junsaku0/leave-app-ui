@@ -27,8 +27,9 @@ export class AdminComponent {
     //this.adminUser = routerService.getQueryParams().user;
     this.createUserForm = new FormGroup<any>( {
       name: new FormControl(''),
+      role: new FormControl(''),
+      head: new FormControl(''),
       hireDate: new FormControl(''),
-      manager: new FormControl(''),
       totalLeave: new FormControl('')
     });
 
@@ -36,35 +37,22 @@ export class AdminComponent {
   }
 
   public onSubmit() {
-    console.log(this.createUserForm.getRawValue());
-
-    if (this.selectedRole == 'Manager') {
-      const formValue = this.createUserForm.getRawValue();
-
-      this.managerService.saveManager(formValue)
-        .subscribe({
-          next: (data) => {
-            console.log('saved data:', data);
-          }
-        });
-    } else if (this.selectedRole == 'Employee') {
-      const formValue = this.createUserForm.getRawValue();
-
-      this.employeeService.saveEmployee(formValue)
-        .subscribe({
-          next: (data) => {
-            console.log('saved data:', data);
-          }
-        });
-    }
+    const formValue = this.createUserForm.getRawValue();
+    console.log('save user info:', formValue);
+    this.userService.saveUser(formValue)
+       .subscribe({
+           next: (data) => {
+               console.log('saved data:', data);
+           }
+       });
   }
 
   public onSelected(role: string) {
     this.selectedRole = role;
-    if (this.selectedRole == 'Manager') {
-      this.createUserForm.removeControl('manager');
-    } else if (this.selectedRole == 'Employee') {
-      this.createUserForm.addControl('manager', new FormControl(''));
+    if (this.selectedRole == 'MANAGER') {
+        this.createUserForm.controls["head"].setValue('superAdmin');
+    }
+    if (this.selectedRole == 'EMPLOYEE') {
       this.userService.fetchUserManager()
         .subscribe({
           next: (data: UserResponse) =>
@@ -78,7 +66,7 @@ export class AdminComponent {
 
 
   private fetchManagerList() {
-    this.managerService.fetchManager().subscribe({
+    this.userService.fetchUserManager().subscribe({
       next: (data: UserResponse[]) => {
         console.log('Retrieve manager list:', data);
         this.managerList = data;

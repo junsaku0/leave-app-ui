@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ManagerService } from '../service/manager.service';
 import { UserResponse } from '../model/user-response.model';
+import {RouterService} from "../service/router.service";
+import {User} from "../model/user.model";
 
 @Component({
   selector: 'app-manager',
@@ -9,8 +11,12 @@ import { UserResponse } from '../model/user-response.model';
 })
 export class ManagerComponent implements OnInit {
   public managerList: UserResponse[] = [];
+  public userManager: any;
+  public page = 'viewMyLeave';
 
-  constructor(private managerService: ManagerService) { }
+  constructor(private managerService: ManagerService,private routerService:RouterService) {
+      this.userManager = this.routerService.getQueryParams().user;
+  }
 
   ngOnInit(): void {
     this.fetchManagerList();
@@ -26,5 +32,10 @@ export class ManagerComponent implements OnInit {
         console.error('Error retrieving manager list:', error);
       }*/
     );
+  }
+
+  public navigatePage(page: string){
+      this.page = page;
+
   }
 }

@@ -10,6 +10,7 @@ import { ManagerComponent } from './user/manager/manager.component';
 
 import {ReactiveFormsModule} from "@angular/forms";
 import { LeaveComponent } from './user/leave/leave.component';
+import { EmployeeComponent } from './user/employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LeaveComponent } from './user/leave/leave.component';
     AdminComponent,
     UserComponent,
     ManagerComponent,
-    LeaveComponent
+    LeaveComponent,
+    EmployeeComponent
   ],
   imports: [
     HttpClientModule,
