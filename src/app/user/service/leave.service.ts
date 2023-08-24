@@ -14,4 +14,8 @@ export class LeaveService{
   public saveLeave(requestBody: LeaveDetails){
     return this.leaveRepository.createLeave(requestBody);
   }
+
+  public fetchPersonalLeave(id: number){
+      return this.leaveRepository.getMyLeave(id);
+  }
 }
