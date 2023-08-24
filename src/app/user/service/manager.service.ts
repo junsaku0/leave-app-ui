@@ -15,4 +15,8 @@ export class ManagerService {
   public saveManager(requestBody: ManagerDetails) {
     return this.managerRepository.createManager(requestBody);
   }
+
+  public fetchManager() {
+    return this.managerRepository.getManager();
+  }
 }

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {EmployeeDetails} from "../model/employee-details.model";
 import {ManagerDetails} from "../model/manager-details.model";
+import {UserDetails} from "../model/user-details.model";
 
 
 @Injectable({
@@ -34,5 +35,10 @@ export class UserRepository {
       const getUserEmployeeUrl = this.baseUrl + '/employee';
       return this.httpClient.get<any>(getUserEmployeeUrl, {headers: this.headers});
   }
+
+    public createUser(requestBody: UserDetails): Observable<any> {
+        const getUserUrl = this.baseUrl;
+        return this.httpClient.post<any>(getUserUrl, requestBody, {headers: this.headers});
+    }
 
 }
