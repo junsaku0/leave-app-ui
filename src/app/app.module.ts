@@ -8,8 +8,10 @@ import { UserComponent } from './user/user.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ManagerComponent } from './user/manager/manager.component';
 
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { EmployeeComponent } from './user/employee/employee.component';
+
+
 
 @NgModule({
   declarations: [
@@ -17,14 +19,17 @@ import { EmployeeComponent } from './user/employee/employee.component';
     AdminComponent,
     UserComponent,
     ManagerComponent,
-    EmployeeComponent
+    EmployeeComponent,
+
+
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
