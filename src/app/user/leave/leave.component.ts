@@ -19,11 +19,13 @@ export class LeaveComponent implements OnInit{
   constructor(private leaveService: LeaveService, public routersService: RouterService) {
 
   this.leaveForm = new FormGroup<any>({
+      userId: new FormControl(''),
       name: new FormControl(''),
       role: new FormControl(''),
     startDate: new FormControl(''),
     endDate: new FormControl(''),
-    reason: new FormControl('')
+    reason: new FormControl(''),
+      totalDaysLeave: new FormControl('')
   });
 
 
@@ -33,6 +35,7 @@ export class LeaveComponent implements OnInit{
     }
 
   public OnSubmit(){
+      this.leaveForm.controls["userId"].setValue(this.userDetails.id);
       this.leaveForm.controls["name"].setValue(this.userDetails.name);
       this.leaveForm.controls["role"].setValue(this.userDetails.role);
     console.log(this.leaveForm.getRawValue())
@@ -45,6 +48,23 @@ export class LeaveComponent implements OnInit{
       }
     });
   }
+
+    calculateTotalDays(): number {
+        const startDate = this.leaveForm.get('startDate')?.value;
+        const endDate = this.leaveForm.get('endDate')?.value;
+
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+
+            const timeDifference = Math.abs(end.getTime() - start.getTime());
+            const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+            return totalDays;
+        }
+        return 0;
+
+    }
 
 
 }

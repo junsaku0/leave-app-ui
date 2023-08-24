@@ -22,5 +22,10 @@ public createLeave(requestBody: LeaveDetails): Observable<any>{
     return this.httpClient.post<any>(getLeaveUrl, requestBody, {headers: this.headers})
 }
 
+public getMyLeave(id: number){
+      const getMyLeaveUrl = this.baseUrl + '/' + id;
+      return this.httpClient.get<any>(getMyLeaveUrl, {headers: this.headers})
+}
+
 
 }
