@@ -24,9 +24,10 @@ export class EmployeeComponent  {
                const firstDate = new Date(this.startDate);
                const lastDate = new Date(this.endDate);
                this.totalLeaveDays = this.calculateTotalLeaveNotIncludedDayOff(firstDate,lastDate)
-               this.status = "PENDING";
                console.log("Submitted");
                alert("Success!");
+               this.clearField();
+               this.status = "PENDING";
            }else {
                throw new Error("");
            }
