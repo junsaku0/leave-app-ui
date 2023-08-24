@@ -9,13 +9,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { ManagerComponent } from './user/manager/manager.component';
 
 import {ReactiveFormsModule} from "@angular/forms";
+import { LeaveComponent } from './user/leave/leave.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
     UserComponent,
-    ManagerComponent
+    ManagerComponent,
+    LeaveComponent
   ],
   imports: [
     HttpClientModule,

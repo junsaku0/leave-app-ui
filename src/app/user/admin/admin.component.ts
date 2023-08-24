@@ -5,6 +5,7 @@ import {RouterService} from "../service/router.service";
 import {ManagerService} from "../service/manager.service";
 import {EmployeeService} from "../service/employee.service";
 import {UserResponse} from "../model/user-response.model";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -19,7 +20,8 @@ export class AdminComponent {
 
 
   constructor(private userService: UserService, private managerService: ManagerService,
-              private employeeService: EmployeeService, public routerService: RouterService) {
+              private employeeService: EmployeeService, public routerService: RouterService,
+              private router: Router) {
 
     this.adminUser = { name: 'Admin User' }; // the original code is below this
     //this.adminUser = routerService.getQueryParams().user;
@@ -96,5 +98,15 @@ export class AdminComponent {
     this.fetchManagerList();
   }
 
+/*
+  applyLeave(content: string) {
+    if (content === 'applyLeaves') {
+      // Redirect to the leave HTML page
+      this.router.navigate(['/leave'])
+    }
+  }
 
-}
+*/
+
+
+  }
