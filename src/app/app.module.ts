@@ -11,6 +11,7 @@ import { ManagerComponent } from './user/manager/manager.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { LeaveComponent } from './user/leave/leave.component';
 import { EmployeeComponent } from './user/employee/employee.component';
+import { MyLeaveComponent } from './user/my-leave/my-leave.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EmployeeComponent } from './user/employee/employee.component';
     UserComponent,
     ManagerComponent,
     LeaveComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    MyLeaveComponent
   ],
   imports: [
     HttpClientModule,

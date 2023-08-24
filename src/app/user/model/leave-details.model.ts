@@ -1,5 +1,5 @@
 export interface LeaveDetails{
-    userId: number
+  userId: number
   name: String
   role: String
   startDate: String

@@ -24,7 +24,8 @@ export class LeaveComponent implements OnInit{
       role: new FormControl(''),
     startDate: new FormControl(''),
     endDate: new FormControl(''),
-    reason: new FormControl('')
+    reason: new FormControl(''),
+      totalDaysLeave: new FormControl('')
   });
 
 
@@ -47,6 +48,23 @@ export class LeaveComponent implements OnInit{
       }
     });
   }
+
+    calculateTotalDays(): number {
+        const startDate = this.leaveForm.get('startDate')?.value;
+        const endDate = this.leaveForm.get('endDate')?.value;
+
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+
+            const timeDifference = Math.abs(end.getTime() - start.getTime());
+            const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+            return totalDays;
+        }
+        return 0;
+
+    }
 
 
 }
