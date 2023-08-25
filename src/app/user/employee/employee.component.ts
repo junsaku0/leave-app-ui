@@ -16,9 +16,12 @@ export class EmployeeComponent implements OnInit {
     totalLeaveDays:any;
     status = '';
     reason : string = '';
+    userId: number;
+
 
     constructor(private employeeService: EmployeeService,private routerService:RouterService) {
         this.userEmployee = this.routerService.getQueryParams().user;
+        this.userId = this.userEmployee.id
     }
 
    applyLeave(){
@@ -83,5 +86,8 @@ export class EmployeeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+    }
+    public navigatePage(page: string) {
+        this.page = page;
     }
 }

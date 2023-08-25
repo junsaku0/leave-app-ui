@@ -1,20 +1,24 @@
-<h3>Employee name here:</h3>
+
 <table class="first-table">
     <thead>
+
     <tr>
         <th>Date Leave</th>
         <th>Reason</th>
         <th>Total Leave</th>
         <th>Status</th>
+        <th>File Date</th>
 
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+    <tr *ngFor = "let leave of myLeaves.content" >
+        <td>{{leave.startDate + leave.endDate}}</td>
+        <td>{{leave.reason}}</td>
+        <td>{{leave.duration}}</td>
+        <td>{{leave.status}}</td>
+        <td>{{leave.fileDate}}</td>
+
     </tr>
     </tbody>
 </table>

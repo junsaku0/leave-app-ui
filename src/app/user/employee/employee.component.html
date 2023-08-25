@@ -1,9 +1,15 @@
 <div>
+    <ul>
+        <li><a (click)="navigatePage('applyLeave')">Apply Leave</a></li>
+        <li><a (click)="navigatePage('viewMyLeave')">View My Leave</a></li>
+        </ul>
     <div>
-        <h1>Welcome! Employee Name</h1>
+        <h1>Welcome! {{userEmployee.name}}</h1>
     </div>
     <div class="body">
         <div><button (click)="inquireLeaveBalance()">View Balance Leave</button></div>
+        <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
+       <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
         <table class="first-table">
             <thead>
             <tr>

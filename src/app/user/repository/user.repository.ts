@@ -40,5 +40,4 @@ export class UserRepository {
         const getUserUrl = this.baseUrl;
         return this.httpClient.post<any>(getUserUrl, requestBody, {headers: this.headers});
     }
-
 }
