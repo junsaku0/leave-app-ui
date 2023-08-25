@@ -1,22 +1,29 @@
 <div class="landingPage">
-
+    <h1>Leave Application</h1>
   <div class="userSelector">
-    <h1>Select User</h1>
-
     <div class="user" id="admins">
-      <div class="userAdmin" *ngFor="let admin of adminList" (click)="showUserPage(admin)">
-        <p>{{ this.admin.id }} - {{ this.admin.name }} - {{ this.admin.role }}</p>
+        <h2>Admin</h2>
+        <div class="scrollable">
+      <div class="userItem" *ngFor="let admin of adminList" (click)="showUserPage(admin)">
+        <p>&nbsp; &nbsp; &nbsp;{{ this.admin.name }}</p>
       </div>
+        </div>
     </div>
     <div class="user" id="managers">
-      <div class="userAdmin" *ngFor="let manager of managerList" (click)="showUserPage(manager)">
-        <p>{{ this.manager.id }} - {{ this.manager.name }} - {{ this.manager.role }}</p>
+        <h2>Manager</h2>
+        <div class="scrollable">
+      <div class="userItem" *ngFor="let manager of managerList" (click)="showUserPage(manager)">
+        <p>&nbsp; &nbsp; &nbsp;{{ this.manager.name }}</p>
       </div>
+        </div>
     </div>
     <div class="user" id="employees">
-      <div class="userAdmin" *ngFor="let employee of employeeList" (click)="showUserPage(employee)">
-        <p>{{ this.employee.id }} - {{ this.employee.name }} - {{ this.employee.role }}</p>
+        <h2>Employee</h2>
+        <div class="scrollable">
+      <div class="userItem" *ngFor="let employee of employeeList" (click)="showUserPage(employee)">
+        <p>&nbsp; &nbsp; &nbsp;{{ this.employee.name }}</p>
       </div>
+        </div>
     </div>
   </div>
 </div>
