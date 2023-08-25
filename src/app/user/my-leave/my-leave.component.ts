@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-my-leave',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-leave.component.css']
 })
 export class MyLeaveComponent {
+
+    @Input() userDetails: any;
+
 
 }

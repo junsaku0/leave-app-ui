@@ -12,10 +12,12 @@ import {User} from "../model/user.model";
 export class ManagerComponent implements OnInit {
   public managerList: UserResponse[] = [];
   public userManager: any;
+  managerId: number;
   public page = 'viewMyLeave';
 
   constructor(private managerService: ManagerService,private routerService:RouterService) {
       this.userManager = this.routerService.getQueryParams().user;
+      this.managerId = this.userManager.id;
   }
 
   ngOnInit(): void {
