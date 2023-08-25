@@ -1,4 +1,4 @@
-import {Component, } from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {Router} from "@angular/router";
 import {RouterService} from "../service/router.service";
 import {EmployeeService} from "../service/employee.service";
@@ -8,7 +8,7 @@ import {EmployeeService} from "../service/employee.service";
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
 })
-export class EmployeeComponent  {
+export class EmployeeComponent implements OnInit {
     public userEmployee: any;
     public page = 'viewMyLeave';
     startDate = "";
@@ -80,5 +80,8 @@ export class EmployeeComponent  {
 
     inquireLeaveBalance() {
         alert('My Leave Balance..')
+    }
+
+    ngOnInit(): void {
     }
 }

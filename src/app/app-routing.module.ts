@@ -5,6 +5,7 @@ import {UserComponent} from "./user/user.component";
 import {ManagerComponent} from "./user/manager/manager.component";
 import {LeaveComponent} from "./user/leave/leave.component";
 import {EmployeeComponent} from "./user/employee/employee.component";
+import {MyLeaveComponent} from "./user/my-leave/my-leave.component";
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
       { path: '', component: UserComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'manager', component: ManagerComponent },
-        {path: 'employee', component: EmployeeComponent}
+        {path: 'employee', component: EmployeeComponent},
+        {path: 'my-leave', component: MyLeaveComponent}
 
 
     ]
