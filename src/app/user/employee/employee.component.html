@@ -1,46 +1,41 @@
 <div>
     <div>
         <h1>Welcome! Employee Name</h1>
-
     </div>
-
-
     <div class="body">
+        <div><button (click)="inquireLeaveBalance()">View Balance Leave</button></div>
         <table class="first-table">
             <thead>
             <tr>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Reason</th>
-                                <th>Earned Leave</th>
+                <th>Earned Leave</th>
                 <th> Total Leave Days</th>
-                                <th>Status</th>
-                                <th>Manager</th>
+                <th>Status</th>
+                <th>Manager</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td >
-                    <input type="date" [(ngModel)]="startDate" (ngModelChange)="employeeTotalDays()"></td>
+                <td ><input type="date" [(ngModel)]="startDate" (ngModelChange)="employeeTotalDays()"></td>
                 <td><input type="date" [(ngModel)]="endDate" (ngModelChange)="employeeTotalDays()"></td>
-
                 <td >
                     <select [(ngModel)]="reason" (ngModelChange)="leaveReason()">
-                        <Option value=" "></Option>
+                        <Option value="Please select" disabled>Please select</Option>
                         <Option value="Vacation Leave">Vacation Leave</Option>
                         <Option value="Sick Leave">Sick Leave</Option>
                     </select>
                 </td>
-
-                                <td> 0</td>
+                <td> 0</td>
                 <td>{{totalLeaveDays}}</td>
-                                <td>{{status}}</td>
-                                <td>Ernest</td>
+                <td>{{status}}</td>
+                <td>Ernest</td>
             </tr>
             </tbody>
-            <button type="submit" (click)="applyLeave()">Apply Leave</button>
-            <button>Cancel</button>
         </table>
+        <button type="submit" (click)="applyLeave()">Apply Leave</button>
+        <button>Cancel</button>
     </div>
 </div>
 

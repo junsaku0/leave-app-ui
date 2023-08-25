@@ -1,6 +1,5 @@
 import {Component, } from '@angular/core';
 import {Router} from "@angular/router";
-import {UserResponse} from "../model/user-response.model";
 import {RouterService} from "../service/router.service";
 import {EmployeeService} from "../service/employee.service";
 
@@ -79,4 +78,7 @@ export class EmployeeComponent  {
 
     }
 
+    inquireLeaveBalance() {
+        alert('My Leave Balance..')
+    }
 }
