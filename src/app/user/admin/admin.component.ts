@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {UserService} from "../service/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {RouterService} from "../service/router.service";
-import {ManagerService} from "../service/manager.service";
-import {EmployeeService} from "../service/employee.service";
 import {UserResponse} from "../model/user-response.model";
 import { Router } from '@angular/router';
 @Component({
@@ -19,12 +17,8 @@ export class AdminComponent {
   public currentContent: any;
 
 
-  constructor(private userService: UserService, private managerService: ManagerService,
-              private employeeService: EmployeeService, public routerService: RouterService,
-              private router: Router) {
-
-    this.adminUser = { name: 'Admin User' }; // the original code is below this
-    //this.adminUser = routerService.getQueryParams().user;
+  constructor(private userService: UserService, public routerService: RouterService) {
+    this.adminUser = routerService.getQueryParams().user;
     this.createUserForm = new FormGroup<any>( {
       name: new FormControl(''),
       role: new FormControl(''),

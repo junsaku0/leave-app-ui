@@ -38,10 +38,12 @@
     border-radius: 25px;
     margin: 10px;
     font-family: sans-serif;
+    transition: 0.2s;
 }
 
 .userItem:hover {
     background-color: #555555;
     cursor: pointer;
+    transition: 0.2s;
 }
 
