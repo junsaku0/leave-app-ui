@@ -24,6 +24,10 @@ export class UserService {
       return this.userRepository.getUserEmployee();
   }
 
+    public fetchAllUsers(): Observable<any>{
+        return this.userRepository.getAllUsers();
+    }
+
   public saveUser(requestBody: UserDetails): Observable<any> {
       return this.userRepository.createUser(requestBody);
   }

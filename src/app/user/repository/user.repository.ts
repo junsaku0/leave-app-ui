@@ -36,6 +36,10 @@ export class UserRepository {
       return this.httpClient.get<any>(getUserEmployeeUrl, {headers: this.headers});
   }
 
+    public getAllUsers(): Observable<any> {
+        return this.httpClient.get<any>(this.baseUrl, {headers: this.headers});
+    }
+
     public createUser(requestBody: UserDetails): Observable<any> {
         const getUserUrl = this.baseUrl;
         return this.httpClient.post<any>(getUserUrl, requestBody, {headers: this.headers});
