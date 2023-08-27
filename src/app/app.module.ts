@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LeaveComponent} from './user/leave/leave.component';
 import {EmployeeComponent} from './user/employee/employee.component';
 import {MyLeaveComponent} from './user/my-leave/my-leave.component';
+import { ViewMyEmployeeLeaveComponent } from './user/view-my-employee-leave/view-my-employee-leave.component';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import {MyLeaveComponent} from './user/my-leave/my-leave.component';
     ManagerComponent,
       LeaveComponent,
     EmployeeComponent,
-      MyLeaveComponent
+    MyLeaveComponent,
+    ViewMyEmployeeLeaveComponent,
+
   ],
     imports: [
         HttpClientModule,

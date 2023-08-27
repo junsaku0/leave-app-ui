@@ -1,6 +1,10 @@
+
 import {Component, Input, OnInit} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
 import {HttpClient} from "@angular/common/http";
+
+
+
 
 
 @Component({
@@ -25,5 +29,8 @@ fetchMyLeave (userId :number) {
     response.subscribe((data) => this.myLeaves = data);
     // this.fetchMyLeave(this.userId)
     }
+
+    @Input() userDetails: any;
+
 
 }
