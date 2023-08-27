@@ -27,5 +27,10 @@ public getMyLeave(id: number){
       return this.httpClient.get<any>(getMyLeaveUrl, {headers: this.headers})
 }
 
+    public getLeaves(){
+        const getLeavesUrl = this.baseUrl + '/head';
+        return this.httpClient.get<any>(getLeavesUrl, {headers: this.headers})
+    }
+
 
 }

@@ -16,7 +16,8 @@ export class UserComponent implements OnInit{
   public employeeList: any;
   public userFilter: User[] = [];
 
-  constructor(private userService: UserService, private routerService: RouterService) {
+  constructor(private userService: UserService,
+              private routerService: RouterService) {
   }
 
   ngOnInit() {

@@ -1,23 +1,31 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../service/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {RouterService} from "../service/router.service";
 import {UserResponse} from "../model/user-response.model";
 import { Router } from '@angular/router';
+import {LeaveService} from "../service/leave.service";
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit{
   public createUserForm: any;
   public adminUser: any;
+  public managerUserList: any;
+
   public managerList: any;
+  public employeeList: any;
+  public leaveList: any;
+
   public selectedRole: any;
   public currentContent: any;
 
 
-  constructor(private userService: UserService, public routerService: RouterService) {
+  constructor(private userService: UserService,
+              private leaveService: LeaveService,
+              public routerService: RouterService) {
     this.adminUser = routerService.getQueryParams().user;
     this.createUserForm = new FormGroup<any>( {
       name: new FormControl(''),
@@ -29,6 +37,12 @@ export class AdminComponent {
 
     this.currentContent = 'viewLeaves';
   }
+
+    ngOnInit(): void {
+        this.fetchManagerList();
+        this.fetchEmployeeList();
+        this.fetchLeaveList();
+    }
 
   public onSubmit() {
     const formValue = this.createUserForm.getRawValue();
@@ -52,7 +66,7 @@ export class AdminComponent {
           next: (data: UserResponse) =>
           {
             console.log('Retrieve manager list:', data);
-            this.managerList = data;
+            this.managerUserList = data;
           }
         });
     }
@@ -60,35 +74,37 @@ export class AdminComponent {
 
 
   private fetchManagerList() {
-    this.userService.fetchUserManager().subscribe({
-      next: (data: UserResponse[]) => {
+    this.userService.fetchManagers().subscribe({
+      next: (data: any) => {
         console.log('Retrieve manager list:', data);
         this.managerList = data;
       }
     });
   }
 
-  ngOnInit(): void {
-    this.viewManagers();
-  }
+    private fetchEmployeeList() {
+        this.userService.fetchEmployees().subscribe({
+            next: (data: any) => {
+                console.log('Retrieve employee list:', data);
+                this.employeeList = data;
+            }
+        });
+    }
 
+    private fetchLeaveList() {
+        this.leaveService.fetchLeaves().subscribe({
+            next: (data: any) => {
+                this.leaveList = data.content;
+                console.log('Retrieve leave list:', data);
+            }
+        });
+    }
 
   public showContent(content: string) {
     this.currentContent = content;
-  }
-  public viewManagers() {
-    this.fetchManagerList();
-  }
 
-/*
-  applyLeave(content: string) {
-    if (content === 'applyLeaves') {
-      // Redirect to the leave HTML page
-      this.router.navigate(['/leave'])
-    }
-  }
 
-*/
+  }
 
 
   }

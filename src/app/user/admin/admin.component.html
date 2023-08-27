@@ -1,11 +1,14 @@
 <div class="sidebar">
   <ul>
-    <li><a (click)="showContent('createEmployee')">Create Employee</a></li>
-    <li><a (click)="showContent('viewEmployee')">View Employee</a></li>
-    <li><a (click)="showContent('viewManagers')">View Managers</a></li>
+    <li class="navHead">Leave</li>
     <li><a (click)="showContent('viewLeaves')">View Leaves</a></li>
-    <li><a routerLink="/leave">Apply Leave</a></li>  </ul>
+
+    <li class="navHead">Employee</li>
+    <li><a (click)="showContent('viewEmployee')">View Employees</a></li>
+    <li><a (click)="showContent('createEmployee')">Create Employee</a></li>
+  </ul>
 </div>
+
 <div class="content">
   <div class="header">
     <h1>Admin: {{ adminUser.name }}</h1>
@@ -25,7 +28,7 @@
         <div class="formItem">
           <label for="role">Role:</label>
           <select id="role" #role (change)="onSelected(role.value)" formControlName="role">
-            <option disabled selected>Select role</option>
+            <option disabled selected hidden>Select role</option>
             <option>MANAGER</option>
             <option>EMPLOYEE</option>
           </select>
@@ -35,7 +38,7 @@
             <label>Manager: </label> <br />
             <select formControlName="head">
                 <option default>Manager</option>
-                <option *ngFor="let manager of managerList">{{ manager.name }}</option>
+                <option *ngFor="let manager of managerUserList">{{ manager.name }}</option>
             </select>
         </div>
 
@@ -56,7 +59,27 @@
     </div>
 
     <div *ngIf="currentContent === 'viewEmployee'">
-      <!-- View Employee content -->
+        <h2>Employee List</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Hire Date</th>
+                <th>Total Leaves</th>
+                <th>Earned Leaves</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let employee of employeeList">
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.hireDate }}</td>
+                <td>{{ employee.totalLeaves }}</td>
+                <td>{{ employee.earnedLeave }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <div *ngIf="currentContent === 'viewManagers'">
@@ -68,6 +91,7 @@
           <th>Name</th>
           <th>Hire Date</th>
           <th>Total Leaves</th>
+          <th>Earned Leaves</th>
         </tr>
         </thead>
         <tbody>
@@ -75,14 +99,14 @@
           <td>{{ manager.id }}</td>
           <td>{{ manager.name }}</td>
           <td>{{ manager.hireDate }}</td>
-          <td>{{ manager.totalLeave }}</td>
+          <td>{{ manager.totalLeaves }}</td>
+          <td>{{ manager.earnedLeave }}</td>
         </tr>
         </tbody>
       </table>
     </div>
 
     <div *ngIf="currentContent === 'viewLeaves'">
-      <!-- View Leaves content -->
       <table>
         <thead>
         <tr>
@@ -90,11 +114,21 @@
           <th>Employee Name</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>Duration</th>
           <th>Reason</th>
+          <th>Status</th>
         </tr>
         </thead>
         <tbody>
-        <!-- Empty table rows -->
+        <tr *ngFor="let leave of leaveList">
+            <th>{{ leave.id }}</th>
+            <th>{{ leave.name }}</th>
+            <th>{{ leave.startDate }}</th>
+            <th>{{ leave.endDate }}</th>
+            <th>{{ leave.duration }}</th>
+            <th>{{ leave.reason }}</th>
+            <th>{{ leave.status }}</th>
+        </tr>
         </tbody>
       </table>
     </div>
