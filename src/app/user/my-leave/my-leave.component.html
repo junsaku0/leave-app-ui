@@ -13,7 +13,7 @@
     </thead>
     <tbody>
     <tr *ngFor = "let leave of myLeaves.content" >
-        <td>{{leave.startDate + leave.endDate}}</td>
+        <td>{{leave.startDate + " - " + leave.endDate}}</td>
         <td>{{leave.reason}}</td>
         <td>{{leave.duration}}</td>
         <td>{{leave.status}}</td>

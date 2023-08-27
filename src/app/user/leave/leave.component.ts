@@ -2,9 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
 import {RouterService} from "../service/router.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {UserResponse} from "../model/user-response.model";
 import {LeaveDetails} from "../model/leave-details.model";
-import {User} from "../model/user.model";
 
 @Component({
   selector: 'app-leave',

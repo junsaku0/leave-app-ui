@@ -1,7 +1,6 @@
 import {Component, OnInit,} from '@angular/core';
 import {Router} from "@angular/router";
 import {RouterService} from "../service/router.service";
-import {EmployeeService} from "../service/employee.service";
 
 @Component({
   selector: 'app-employee',
@@ -19,7 +18,7 @@ export class EmployeeComponent implements OnInit {
     userId: number;
 
 
-    constructor(private employeeService: EmployeeService,private routerService:RouterService) {
+    constructor(private routerService:RouterService) {
         this.userEmployee = this.routerService.getQueryParams().user;
         this.userId = this.userEmployee.id
     }

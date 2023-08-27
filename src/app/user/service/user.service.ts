@@ -1,11 +1,6 @@
 import {Injectable} from "@angular/core";
 import {UserRepository} from "../repository/user.repository";
 import {Observable} from "rxjs";
-
-import {ManagerRepository} from "../repository/manager.repository";
-
-import {ManagerDetails} from "../model/manager-details.model";
-import {EmployeeDetails} from "../model/employee-details.model";
 import {UserDetails} from "../model/user-details.model";
 
 
@@ -28,6 +23,10 @@ export class UserService {
   public fetchUserEmployee(): Observable<any>{
       return this.userRepository.getUserEmployee();
   }
+
+    public fetchAllUsers(): Observable<any>{
+        return this.userRepository.getAllUsers();
+    }
 
   public saveUser(requestBody: UserDetails): Observable<any> {
       return this.userRepository.createUser(requestBody);

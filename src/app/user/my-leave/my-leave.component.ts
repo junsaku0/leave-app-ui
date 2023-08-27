@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
-import {subscribeOn} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-my-leave',
@@ -8,10 +9,10 @@ import {subscribeOn} from "rxjs";
   styleUrls: ['./my-leave.component.css']
 })
 export class MyLeaveComponent implements OnInit {
-    public myLeaves:any = {}
+    public myLeaves:any
     @Input() userId!:number;
 
-constructor(private leaveService: LeaveService){
+constructor(private leaveService: LeaveService, private Http: HttpClient){
 
 }
 fetchMyLeave (userId :number) {
@@ -19,10 +20,10 @@ fetchMyLeave (userId :number) {
         (data) => { this.myLeaves = data},
     );
 }
-
     ngOnInit(): void {
-    this.fetchMyLeave(this.userId)
-
+    let response = this.Http.get("http://localhost:8080/api/v1/leave/head/{id}");
+    response.subscribe((data) => this.myLeaves = data);
+    // this.fetchMyLeave(this.userId)
     }
 
 }
