@@ -44,8 +44,8 @@ export class UserRepository {
         const getUserUrl = this.baseUrl;
         return this.httpClient.post<any>(getUserUrl, requestBody, {headers: this.headers});
     }
-<<<<<<< HEAD
-=======
+
+
 
     public getManagers(): Observable<any> {
         const getManagersUrl = 'api/v1/manager';
@@ -57,5 +57,5 @@ export class UserRepository {
         return this.httpClient.get<any>(getEmployeesUrl, {headers: this.headers});
     }
 
->>>>>>> b32be86053f332c303396fb2c129f077f0f0cbc6
+
 }
