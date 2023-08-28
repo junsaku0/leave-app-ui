@@ -9,10 +9,12 @@ import {RouterService} from "../service/router.service";
 })
 export class ManagerComponent implements OnInit {
   public userManager: any;
+  managerId: number;
   public page = 'viewMyLeave';
 
   constructor(private routerService:RouterService) {
       this.userManager = this.routerService.getQueryParams().user;
+      this.managerId = this.userManager.id;
   }
 
   ngOnInit(): void {
