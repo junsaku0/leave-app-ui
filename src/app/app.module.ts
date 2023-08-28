@@ -13,6 +13,10 @@ import { LeaveComponent } from './user/leave/leave.component';
 import { EmployeeComponent } from './user/employee/employee.component';
 import { MyLeaveComponent } from './user/my-leave/my-leave.component';
 import { ViewMyEmployeeLeaveComponent } from './user/view-my-employee-leave/view-my-employee-leave.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+
+
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import { ViewMyEmployeeLeaveComponent } from './user/view-my-employee-leave/view
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

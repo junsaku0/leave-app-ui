@@ -22,4 +22,8 @@ export class LeaveService{
   public fetchMyEmployeeLeave(id: number){
       return this.leaveRepository.getMyEmployeeLeave(id);
   }
+
+  public fetchAllLeave(){
+      return this.leaveRepository.getAllLeave();
+  }
 }

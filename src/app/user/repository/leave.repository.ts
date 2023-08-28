@@ -32,5 +32,10 @@ public getMyEmployeeLeave(id: number){
       return this.httpClient.get<any>(getMyEmployeeLeaveUrl,{headers: this.headers} )
 }
 
+public getAllLeave(){
+      const getAllLeaveUrl = this.baseUrl + '/head';
+      return this.httpClient.get<any>(getAllLeaveUrl, {headers: this.headers});
+}
+
 
 }

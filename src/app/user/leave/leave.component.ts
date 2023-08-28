@@ -53,18 +53,37 @@ export class LeaveComponent implements OnInit{
         const startDate = this.leaveForm.get('startDate')?.value;
         const endDate = this.leaveForm.get('endDate')?.value;
 
+        /*      if (startDate && endDate) {
+                  const start = new Date(startDate);
+                  const end = new Date(endDate);
+
+                  const timeDifference = Math.abs(end.getTime() - start.getTime());
+                  const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+                  return totalDays;
+              }
+              return 0;
+
+          }*/
+
         if (startDate && endDate) {
             const start = new Date(startDate);
             const end = new Date(endDate);
 
-            const timeDifference = Math.abs(end.getTime() - start.getTime());
-            const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
+            let totalDays = 0;
+            let currentDate = new Date(start);
+
+            while (currentDate <= end) {
+                if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+                    totalDays++;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
 
             return totalDays;
         }
+
         return 0;
 
     }
-
-
 }
