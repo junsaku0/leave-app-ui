@@ -27,6 +27,7 @@ tr{
     border-radius: 2px;
 }
 td{
+    border: 1px solid #231f1f;
     padding:0.75rem;
     text-align:center;
     vertical-align:center;

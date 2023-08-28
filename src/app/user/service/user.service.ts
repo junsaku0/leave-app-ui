@@ -32,4 +32,12 @@ export class UserService {
       return this.userRepository.createUser(requestBody);
   }
 
+    public fetchManagers(): Observable<any>{
+        return this.userRepository.getManagers();
+    }
+
+    public fetchEmployees(): Observable<any>{
+        return this.userRepository.getEmployees();
+    }
+
 }

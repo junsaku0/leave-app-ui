@@ -11,42 +11,26 @@ import {User} from "./model/user.model";
 })
 export class UserComponent implements OnInit{
 
-  public adminList: any;
-  public managerList: any;
-  public employeeList: any;
+  public userList: any;
   public userFilter: User[] = [];
+  public selectedRole = 'all';
 
-  constructor(private userService: UserService, private routerService: RouterService) {
+  constructor(private userService: UserService,
+              private routerService: RouterService) {
   }
 
   ngOnInit() {
     this.initializeUsers();
-    this.userFilter = this.employeeList;
   }
 
   private initializeUsers(): void {
-    this.userService.fetchUserAdmin()
+    this.userService.fetchAllUsers()
       .subscribe({
         next: (data: UserResponse) =>
         {
           console.log('Response:', data);
-          this.adminList = data;
-        }
-      });
-    this.userService.fetchUserManager()
-      .subscribe({
-        next: (data: UserResponse) =>
-        {
-          console.log('Response:', data);
-          this.managerList = data;
-        }
-      });
-    this.userService.fetchUserEmployee()
-      .subscribe({
-        next: (data: UserResponse) =>
-        {
-          console.log('Response:', data);
-          this.employeeList = data;
+          this.userList = data;
+          this.userFilter = this.userList;
         }
       });
   }
@@ -57,14 +41,47 @@ export class UserComponent implements OnInit{
     this.routerService.navigate(pageUrl, {'user': user});
   }
 
-    filterResults(text: string) {
-        if (!text) {
-            this.userFilter = this.employeeList;
-        }
-
-        this.userFilter = this.userFilter.filter(
-            userFilter => userFilter?.name.toLowerCase().includes(text.toLowerCase())
-        );
+  public selectRole(role: string) {
+    this.selectedRole = role;
+    if (this.selectedRole == 'all') {
+      this.userFilter = this.userList;
+    } else if (this.selectedRole == 'admin') {
+        this.userService.fetchUserAdmin()
+            .subscribe({
+                next: (data: User[]) =>
+                {
+                    console.log('Response:', data);
+                    this.userFilter = data;
+                }
+            });
+    } else if (this.selectedRole == 'manager') {
+      this.userService.fetchUserManager()
+        .subscribe({
+          next: (data: User[]) =>
+            {
+              console.log('Response:', data);
+              this.userFilter = data;
+            }
+        });
+    } else if (this.selectedRole == 'employee') {
+      this.userService.fetchUserEmployee()
+        .subscribe({
+          next: (data: User[]) =>
+            {
+              console.log('Response:', data);
+              this.userFilter = data;
+            }
+        });
     }
+  }
+
+  filterResults(text: string) {
+    if (!text) {
+      this.userFilter = this.userList;
+    }
+    this.userFilter = this.userFilter.filter(
+      userFilter => userFilter?.name.toLowerCase().includes(text.toLowerCase())
+    );
+  }
 
 }
