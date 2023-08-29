@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
 import {RouterService} from "../service/router.service";
 import { Calendar } from '@fullcalendar/core';
+import {LeaveUpdateDetails} from "../model/leave-update-details.model";
 
 
 
@@ -14,6 +15,7 @@ export class ViewMyEmployeeLeaveComponent {
     public employeeLeaves: any = {};
     public userManager: any;
     @Input() managerId!: number;
+
 
 
 
@@ -33,6 +35,19 @@ export class ViewMyEmployeeLeaveComponent {
             },
         );
     }
+    public updateEmployeeLeave(leaveId: number, status: any): void {
+        // const updateDetails: LeaveUpdateDetails = {status};
+
+        this.leaveService.updateleave(leaveId, status).subscribe(
+            (response: any) => {
+                // Handle success response here
+                console.log('Leave updated successfully:', response);
+            }
+        );
+    }
+
+
+
 }
 
 

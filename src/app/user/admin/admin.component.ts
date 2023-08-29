@@ -115,7 +115,7 @@ export class AdminComponent implements OnInit{
     }
 
     private fetchLeaveList() {
-        this.leaveService.fetchLeaves().subscribe({
+        this.leaveService.fetchAllLeave().subscribe({
             next: (data: any) => {
                 this.leaveList = data.content;
                 console.log('Retrieve leave list:', data);
@@ -125,20 +125,8 @@ export class AdminComponent implements OnInit{
 
   public showContent(content: string) {
     this.currentContent = content;
-
-  }
-  public viewManagers() {
-    this.fetchManagerList();
-  }
-/*
-  applyLeave(content: string) {
-    if (content === 'applyLeaves') {
-      // Redirect to the leave HTML page
-      this.router.navigate(['/leave'])
-    }
   }
 
-*/
     fetchLeaveEntries(): void {
         this.leaveService.fetchAllLeave().subscribe((response: any) => {
             const leaveEntries = response.content;
