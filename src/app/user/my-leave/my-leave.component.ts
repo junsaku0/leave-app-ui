@@ -10,9 +10,10 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./my-leave.component.css']
 })
 export class MyLeaveComponent implements OnInit {
-    public myLeaves:any;
+    public myLeaves:any = {};
     @Input() userId!:number;
     @Input() userDetails: any;
+
 
 constructor(private leaveService: LeaveService, private Http: HttpClient){
 
@@ -23,14 +24,11 @@ fetchMyLeave (userId :number) {
     );
 }
     ngOnInit(): void {
-    try {
-        let response = this.Http.get("http://localhost:8080/api/v1/leave/head/{id}");
-        response.subscribe((data) => this.myLeaves = data);
-    }catch (error) {
-        console.error('There was an error fetching: ', error);
 
-    }// this.fetchMyLeave(this.userId)
+        this.fetchMyLeave(this.userId)
     }
+
+
 
 
 
