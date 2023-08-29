@@ -3,7 +3,6 @@ import {UserService} from "../service/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {RouterService} from "../service/router.service";
 import {UserResponse} from "../model/user-response.model";
-import { Router } from '@angular/router';
 import {LeaveService} from "../service/leave.service";
 
 import {CalendarOptions, EventClickArg} from '@fullcalendar/core';
@@ -22,14 +21,17 @@ export class AdminComponent implements OnInit{
   public adminUser: any;
   public managerUserList: any;
 
+  public userList: any;
+  public userDropdownState = false;
+
   public managerList: any;
   public employeeList: any;
   public leaveList: any;
 
   public selectedRole: any;
   public currentContent: any;
+  public selectedLeave: any;
 
-    public selectedLeave: any;
     @ViewChild('calendar') calendar!: FullCalendarComponent;
     calendarOptions: CalendarOptions = {
         plugins: [dayGridPlugin, interactionPlugin],
@@ -174,6 +176,12 @@ export class AdminComponent implements OnInit{
         return events;
     }
 
+
+    public showUserPage(user: any) {
+        console.log('Navigate to page:', user.role, ' - ',user.name);
+        const pageUrl = '/user/' + user.role.toLowerCase();
+        this.routerService.navigate(pageUrl, {'user': user});
+    }
 
     }
 

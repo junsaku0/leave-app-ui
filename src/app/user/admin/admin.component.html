@@ -1,25 +1,43 @@
 <div class="sidebar">
+    <h2>LeaveApp</h2>
+    <br />
+    <div class="userSelectorDropdown">
+        <div class="activeUser">
+            <button>
+                {{ adminUser.name }}
+            </button>
+        </div>
+        <div class="userDropdown" *ngIf="userDropdownState">
+            <div class="userItem" *ngFor="let user of userList" (click)="showUserPage(user)">
+                {{ user.name }} - ({{ user.role.charAt(0) + user.role.slice(1).toLowerCase() }})
+            </div>
+        </div>
+    </div>
   <ul>
     <li class="navHead">Leave</li>
-    <li><a (click)="showContent('viewLeaves')">View Leaves</a></li>
+    <li><a (click)="showContent('viewLeaves')" [ngClass]="{'active': currentContent === 'viewLeaves'}">View Leaves</a></li>
+    <li><a (click)="showContent('pendingLeaves')" [ngClass]="{'active': currentContent === 'pendingLeaves'}">Pending Leaves</a></li>
 
     <li class="navHead">Employee</li>
-      <li><a (click)="showContent('viewManagers')">View Managers</a></li>
-    <li><a (click)="showContent('viewEmployee')">View Employees</a></li>
-    <li><a (click)="showContent('createEmployee')">Create Employee</a></li>
+      <li><a (click)="showContent('viewManagers')" [ngClass]="{'active': currentContent === 'viewManagers'}">View Managers</a></li>
+    <li><a (click)="showContent('viewEmployee')" [ngClass]="{'active': currentContent === 'viewEmployee'}">View Employees</a></li>
+    <li><a (click)="showContent('createEmployee')" [ngClass]="{'active': currentContent === 'createEmployee'}">Create Employee</a></li>
   </ul>
+
+
+    <div class="actions">
+        <button routerLink="user">&#8656; &nbsp; Back</button>
+    </div>
 </div>
 
 <div class="content">
-  <div class="header">
-    <h1>Admin: {{ adminUser.name }}</h1>
-    <div class="actions">
-      <button routerLink="user">Back</button>
-    </div>
-  </div>
-
   <div class="body">
-    <div *ngIf="currentContent === 'createEmployee'">
+      <app-view-my-employee-leave *ngIf="currentContent == 'pendingLeaves'" [managerId]="adminUser.id"></app-view-my-employee-leave>
+    <div class="createEmployee">
+      <div *ngIf="currentContent === 'createEmployee'" class="createEmployeeChild">
+        <h2>Create New Employee</h2>
+        <br/>
+        <br/>
       <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
         <div class="formItem">
           <label for="name">Name:</label>
@@ -29,16 +47,16 @@
         <div class="formItem">
           <label for="role">Role:</label>
           <select id="role" #role (change)="onSelected(role.value)" formControlName="role">
-            <option disabled selected hidden>Select role</option>
-            <option>MANAGER</option>
-            <option>EMPLOYEE</option>
+            <option value="" default hidden>Select role</option>
+            <option value="MANAGER">Manager</option>
+            <option value="EMPLOYEE">Employee</option>
           </select>
         </div>
 
         <div class="formItem" *ngIf="selectedRole == 'EMPLOYEE'">
             <label>Manager: </label> <br />
             <select formControlName="head">
-                <option default>Manager</option>
+                <option default hidden>Manager</option>
                 <option *ngFor="let manager of managerUserList">{{ manager.name }}</option>
             </select>
         </div>
@@ -58,17 +76,21 @@
         </div>
       </form>
     </div>
+    </div>
 
     <div *ngIf="currentContent === 'viewEmployee'">
         <h2>Employee List</h2>
+        <br/>
+        <br/>
         <table>
             <thead>
             <tr>
-                <th>Employee ID</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Hire Date</th>
                 <th>Total Leaves</th>
                 <th>Earned Leaves</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -78,6 +100,10 @@
                 <td>{{ employee.hireDate }}</td>
                 <td>{{ employee.totalLeaves }}</td>
                 <td>{{ employee.earnedLeave }}</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Reset</button>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -85,14 +111,17 @@
 
     <div *ngIf="currentContent === 'viewManagers'">
       <h2>Manager List</h2>
+        <br/>
+        <br/>
       <table>
         <thead>
         <tr>
-          <th>Manager ID</th>
+          <th>ID</th>
           <th>Name</th>
           <th>Hire Date</th>
           <th>Total Leaves</th>
           <th>Earned Leaves</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -102,12 +131,15 @@
           <td>{{ manager.hireDate }}</td>
           <td>{{ manager.totalLeaves }}</td>
           <td>{{ manager.earnedLeave }}</td>
-          <td>{{ manager.hiredate }}</td>
-          <td>{{ manager.totalLeave }}</td>
+            <td>
+                <button>Edit</button>
+                <button>Reset</button>
+            </td>
         </tr>
         </tbody>
       </table>
     </div>
+      <div class="viewLeaves">
       <div *ngIf="currentContent === 'viewLeaves'">
           <full-calendar #calendar [options]="calendarOptions"></full-calendar>
           <div *ngIf="selectedLeave">
@@ -116,6 +148,7 @@
               <p>Start Date: {{ selectedLeave.startDate }}</p>
               <p>End Date: {{ selectedLeave.endDate }}</p>
           </div>
+      </div>
       </div>
   </div>
 </div>
