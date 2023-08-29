@@ -1,8 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {EmployeeDetails} from "../model/employee-details.model";
-import {ManagerDetails} from "../model/manager-details.model";
 import {UserDetails} from "../model/user-details.model";
 
 

@@ -21,9 +21,6 @@ const routes: Routes = [
         {path: 'employee', component: EmployeeComponent},
         {path: 'my-leave', component: MyLeaveComponent},
         {path: 'viewMyEmployee', component: MyLeaveComponent}
-
-
-
     ]
   },
     { path: 'viewMyEmployeeLeave', component: ViewMyEmployeeLeaveComponent},

@@ -36,9 +36,9 @@ public getAllLeave(){
       return this.httpClient.get<any>(getAllLeaveUrl, {headers: this.headers});
 }
 
-public updateLeave(id: number, status: String){
+public updateLeave(id: number, status: any){
       const getUpdateLeaveUrl = this.baseUrl + '/' + id;
-      return this.httpClient.put<any>(getUpdateLeaveUrl, {headers: this.headers})
+      return this.httpClient.put<any>(getUpdateLeaveUrl, status,{headers: this.headers})
 
 }
     public getMyLeave(id: number) {
