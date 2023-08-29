@@ -18,6 +18,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     EmployeeComponent,
     MyLeaveComponent,
     ViewMyEmployeeLeaveComponent,
+
 
   ],
     imports: [

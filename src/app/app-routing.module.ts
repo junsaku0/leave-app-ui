@@ -19,8 +19,8 @@ const routes: Routes = [
       { path: 'admin', component: AdminComponent },
       { path: 'manager', component: ManagerComponent },
         {path: 'employee', component: EmployeeComponent},
-        {path: 'my-leave', component: MyLeaveComponent},
-        {path: 'viewMyEmployee', component: MyLeaveComponent}
+        {path: 'myLeave', component: MyLeaveComponent},
+        {path: 'viewMyEmployee', component: ViewMyEmployeeLeaveComponent}
 
 
 
