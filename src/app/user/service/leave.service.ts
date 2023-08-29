@@ -29,4 +29,8 @@ export class LeaveService{
   public fetchAllLeave(){
       return this.leaveRepository.getAllLeave();
   }
+
+  public updateleave(id: number){
+      return this.leaveRepository.updateLeave(id);
+  }
 }

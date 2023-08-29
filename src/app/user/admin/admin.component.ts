@@ -158,10 +158,12 @@ export class AdminComponent implements OnInit{
 
     handleEventClick(info: EventClickArg) {
         const event = info.event;
+        const startDate = event.start?.toLocaleDateString() || '';
+        const endDate = event.end?.toLocaleDateString() || '';
         this.selectedLeave = {
             name: event.title,
-            startDate: event.start,
-            endDate: event.end
+            startDate: startDate,
+            endDate: endDate,
         };
     }
 
