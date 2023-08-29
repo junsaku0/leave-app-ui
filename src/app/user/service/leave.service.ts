@@ -19,6 +19,9 @@ export class LeaveService{
       return this.leaveRepository.getMyLeave(id);
   }
 
+    public fetchLeaves(){
+        return this.leaveRepository.getLeaves();
+    }
   public fetchMyEmployeeLeave(id: number){
       return this.leaveRepository.getMyEmployeeLeave(id);
   }
@@ -27,7 +30,7 @@ export class LeaveService{
       return this.leaveRepository.getAllLeave();
   }
 
-  public updateleave(id: number){
-      return this.leaveRepository.updateLeave(id);
+  public updateleave(id: number, status: String){
+      return this.leaveRepository.updateLeave(id, status);
   }
 }

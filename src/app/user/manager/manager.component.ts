@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ManagerService } from '../service/manager.service';
-import { UserResponse } from '../model/user-response.model';
 import {RouterService} from "../service/router.service";
-import {User} from "../model/user.model";
 import {LeaveService} from "../service/leave.service";
+
 
 @Component({
   selector: 'app-manager',
@@ -11,38 +9,29 @@ import {LeaveService} from "../service/leave.service";
   styleUrls: ['./manager.component.css']
 })
 export class ManagerComponent implements OnInit {
-  public managerList: UserResponse[] = [];
   public userManager: any;
+  public user: any;
   managerId: number;
+  leaveId: number;
   public page = 'viewMyLeave';
 
-  constructor(private managerService: ManagerService,private routerService:RouterService, private leaveService:LeaveService) {
+  constructor(private routerService:RouterService, private leaveService:LeaveService) {
       this.userManager = this.routerService.getQueryParams().user;
       this.managerId = this.userManager.id;
+      this.leaveId = this.user.id;
   }
 
   ngOnInit(): void {
-    this.fetchManagerList();
   }
 
-  private fetchManagerList() {
-    this.managerService.fetchManager().subscribe(
-      (data: UserResponse[]) => {
-        console.log('Retrieve manager list:', data);
-        this.managerList = data;
-      }/*,
-      (error) => {
-        console.error('Error retrieving manager list:', error);
-      }*/
-    );
-  }
-
-  public updateEmployeeLeave(){
-      this.leaveService.updateleave()
-
-  }
-
-
+    public updateEmployeeLeave(leaveId: number, status: string): void {
+        this.leaveService.updateleave(leaveId, status).subscribe(
+            (response: any) => {
+                // Handle success response here
+                console.log('Leave updated successfully:', response);
+            }
+        );
+    }
 
 
   public navigatePage(page: string){
