@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserResponse } from '../model/user-response.model';
 import {RouterService} from "../service/router.service";
+import {LeaveService} from "../service/leave.service";
 
 @Component({
   selector: 'app-manager',
@@ -9,6 +9,7 @@ import {RouterService} from "../service/router.service";
 })
 export class ManagerComponent implements OnInit {
   public userManager: any;
+  public user: any;
   managerId: number;
   public page = 'viewMyLeave';
 
@@ -16,7 +17,6 @@ export class ManagerComponent implements OnInit {
       this.userManager = this.routerService.getQueryParams().user;
       this.managerId = this.userManager.id;
   }
-
 
   ngOnInit(): void {
   }

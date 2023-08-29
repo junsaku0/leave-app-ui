@@ -98,40 +98,11 @@
         <tr *ngFor="let manager of managerList">
           <td>{{ manager.id }}</td>
           <td>{{ manager.name }}</td>
-
           <td>{{ manager.hireDate }}</td>
           <td>{{ manager.totalLeaves }}</td>
           <td>{{ manager.earnedLeave }}</td>
           <td>{{ manager.hiredate }}</td>
           <td>{{ manager.totalLeave }}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-
-
-    <div *ngIf="currentContent === 'viewLeaves'">
-      <table>
-        <thead>
-        <tr>
-          <th>Leave ID</th>
-          <th>Employee Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Duration</th>
-          <th>Reason</th>
-          <th>Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let leave of leaveList">
-            <th>{{ leave.id }}</th>
-            <th>{{ leave.name }}</th>
-            <th>{{ leave.startDate }}</th>
-            <th>{{ leave.endDate }}</th>
-            <th>{{ leave.duration }}</th>
-            <th>{{ leave.reason }}</th>
-            <th>{{ leave.status }}</th>
         </tr>
         </tbody>
       </table>

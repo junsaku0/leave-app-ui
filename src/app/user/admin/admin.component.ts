@@ -1,18 +1,16 @@
-
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from "../service/user.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {RouterService} from "../service/router.service";
 import {UserResponse} from "../model/user-response.model";
 import { Router } from '@angular/router';
 import {LeaveService} from "../service/leave.service";
-import { ViewChild} from '@angular/core';
+
 import {CalendarOptions, EventClickArg} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventInput } from '@fullcalendar/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
-
 
 @Component({
   selector: 'app-admin',
@@ -54,11 +52,6 @@ export class AdminComponent implements OnInit{
               private leaveService: LeaveService,
               public routerService: RouterService) {
     this.adminUser = routerService.getQueryParams().user;
-
-
-
-    this.adminUser = { name: 'Admin User' }; // the original code is below this
-    //this.adminUser = routerService.getQueryParams().user;
     this.createUserForm = new FormGroup<any>( {
       name: new FormControl(''),
       role: new FormControl(''),
@@ -70,13 +63,12 @@ export class AdminComponent implements OnInit{
     this.currentContent = 'viewLeaves';
   }
 
-
     ngOnInit(): void {
         this.fetchManagerList();
         this.fetchEmployeeList();
         this.fetchLeaveList();
+        this.fetchLeaveEntries();
     }
-
 
   public onSubmit() {
     const formValue = this.createUserForm.getRawValue();
@@ -131,23 +123,10 @@ export class AdminComponent implements OnInit{
         });
     }
 
-
-
   public showContent(content: string) {
     this.currentContent = content;
   }
-  public viewManagers() {
-    this.fetchManagerList();
-  }
-/*
-  applyLeave(content: string) {
-    if (content === 'applyLeaves') {
-      // Redirect to the leave HTML page
-      this.router.navigate(['/leave'])
-    }
-  }
 
-*/
     fetchLeaveEntries(): void {
         this.leaveService.fetchAllLeave().subscribe((response: any) => {
             const leaveEntries = response.content;
@@ -167,10 +146,12 @@ export class AdminComponent implements OnInit{
 
     handleEventClick(info: EventClickArg) {
         const event = info.event;
+        const startDate = event.start?.toLocaleDateString() || '';
+        const endDate = event.end?.toLocaleDateString() || '';
         this.selectedLeave = {
             name: event.title,
-            startDate: event.start,
-            endDate: event.end
+            startDate: startDate,
+            endDate: endDate,
         };
     }
 
