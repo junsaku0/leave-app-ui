@@ -1,6 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
 import {RouterService} from "../service/router.service";
+import { Calendar } from '@fullcalendar/core';
+
+
 
 @Component({
   selector: 'app-view-my-employee-leave',
@@ -13,12 +16,14 @@ export class ViewMyEmployeeLeaveComponent {
     @Input() managerId!: number;
 
 
+
     constructor(private leaveService: LeaveService, private routerService: RouterService) {
         this.userManager = this.routerService.getQueryParams().user;
     }
 
     ngOnInit() {
         this.fetchEmployeeLeaves(this.managerId);
+
     }
 
     fetchEmployeeLeaves(managerId: number) {
@@ -28,5 +33,9 @@ export class ViewMyEmployeeLeaveComponent {
             },
         );
     }
-
 }
+
+
+
+
+

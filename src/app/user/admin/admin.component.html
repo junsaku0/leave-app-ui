@@ -98,14 +98,20 @@
         <tr *ngFor="let manager of managerList">
           <td>{{ manager.id }}</td>
           <td>{{ manager.name }}</td>
+<<<<<<< HEAD
           <td>{{ manager.hireDate }}</td>
           <td>{{ manager.totalLeaves }}</td>
           <td>{{ manager.earnedLeave }}</td>
+=======
+          <td>{{ manager.hiredate }}</td>
+          <td>{{ manager.totalLeave }}</td>
+>>>>>>> 78905a447f99bd3867158008ea31bb4ba1820fad
         </tr>
         </tbody>
       </table>
     </div>
 
+<<<<<<< HEAD
     <div *ngIf="currentContent === 'viewLeaves'">
       <table>
         <thead>
@@ -132,5 +138,16 @@
         </tbody>
       </table>
     </div>
+=======
+      <div *ngIf="currentContent === 'viewLeaves'">
+          <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+          <div *ngIf="selectedLeave">
+              <h3>Leave Details</h3>
+              <p>Name: {{ selectedLeave.name }}</p>
+              <p>Start Date: {{ selectedLeave.startDate }}</p>
+              <p>End Date: {{ selectedLeave.endDate }}</p>
+          </div>
+      </div>
+>>>>>>> 78905a447f99bd3867158008ea31bb4ba1820fad
   </div>
 </div>

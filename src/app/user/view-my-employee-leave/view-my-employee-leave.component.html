@@ -2,6 +2,7 @@
 <table class="my-table">
     <thead>
     <tr>
+        <th>Name</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Duration</th>
@@ -13,6 +14,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let leave of employeeLeaves.content">
+        <td>{{ leave.name }}</td>
         <td>{{ leave.startDate }}</td>
         <td>{{ leave.endDate }}</td>
         <td>{{ leave.duration }}</td>
