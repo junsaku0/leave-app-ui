@@ -18,6 +18,7 @@ export class ManagerComponent implements OnInit {
       this.managerId = this.userManager.id;
   }
 
+
   ngOnInit(): void {
   }
 

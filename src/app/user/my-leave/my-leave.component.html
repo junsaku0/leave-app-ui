@@ -1,1 +1,25 @@
-<p>my-leave works!</p>
+
+<table class="first-table">
+    <thead>
+
+    <tr>
+        <th>Date Leave</th>
+        <th>Reason</th>
+        <th>Total Leave</th>
+        <th>Status</th>
+        <th>File Date</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor = "let leave of myLeaves.content" >
+        <td>{{leave.startDate + " - " + leave.endDate}}</td>
+        <td>{{leave.reason}}</td>
+        <td>{{leave.duration}}</td>
+        <td>{{leave.status}}</td>
+        <td>{{leave.fileDate}}</td>
+
+    </tr>
+    </tbody>
+</table>
+<div> <button routerLink="/user">Back</button></div>

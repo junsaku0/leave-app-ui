@@ -1,54 +1,47 @@
-<div class="flex flex-row flex-wrap">
-    <div class="flex align-items-center justify-content-center">
-        <h1>Welcome! Employee Name</h1>
-        <a href="#">View All Leave</a>
+<div>
+    <ul>
+        <li><a (click)="navigatePage('applyLeave')">Apply Leave</a></li>
+        <li><a (click)="navigatePage('viewMyLeave')">View My Leave</a></li>
+        </ul>
+    <div>
+        <h1>Welcome! {{userEmployee.name}}</h1>
     </div>
-
     <div class="body">
+        <div><button (click)="inquireLeaveBalance()">View Balance Leave</button></div>
+        <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
+       <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
         <table class="first-table">
             <thead>
             <tr>
-                <th>Manager</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Reason</th>
-                <th>Time Unit</th>
+                <th>Earned Leave</th>
+                <th> Total Leave Days</th>
                 <th>Status</th>
+                <th>Manager</th>
             </tr>
             </thead>
             <tbody>
             <tr>
+                <td ><input type="date" [(ngModel)]="startDate" (ngModelChange)="employeeTotalDays()"></td>
+                <td><input type="date" [(ngModel)]="endDate" (ngModelChange)="employeeTotalDays()"></td>
+                <td >
+                    <select [(ngModel)]="reason" (ngModelChange)="leaveReason()">
+                        <Option value="Please select" disabled>Please select</Option>
+                        <Option value="Vacation Leave">Vacation Leave</Option>
+                        <Option value="Sick Leave">Sick Leave</Option>
+                    </select>
+                </td>
+                <td> 0</td>
+                <td>{{totalLeaveDays}}</td>
+                <td>{{status}}</td>
                 <td>Ernest</td>
-                <td>8/22/2023</td>
-                <td>8/25/2023</td>
-                <td>Vacation Leave</td>
-                <td>Full day</td>
-                <td>For Approval</td>
             </tr>
             </tbody>
-            <table class="second-table">
-                <thead>
-                <tr>
-                    <th>Earned</th>
-                    <th>Balance</th>
-                </tr>
-
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Vacation Leave</td>
-                    <td>11.0 Day</td>
-                </tr>
-                </tbody>
-
-            </table>
-
         </table>
-        <div class="button">
-            <button>Submit</button>
-            <button>Cancel</button>
-        </div>
-
+        <button type="submit" (click)="applyLeave()">Apply Leave</button>
+        <button>Cancel</button>
     </div>
 </div>
 

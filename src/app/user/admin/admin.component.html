@@ -101,12 +101,12 @@
           <td>{{ manager.hireDate }}</td>
           <td>{{ manager.totalLeaves }}</td>
           <td>{{ manager.earnedLeave }}</td>
+          <td>{{ manager.hiredate }}</td>
+          <td>{{ manager.totalLeave }}</td>
         </tr>
         </tbody>
       </table>
     </div>
-
-
       <div *ngIf="currentContent === 'viewLeaves'">
           <full-calendar #calendar [options]="calendarOptions"></full-calendar>
           <div *ngIf="selectedLeave">
