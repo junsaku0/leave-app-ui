@@ -3,6 +3,7 @@ import { ManagerService } from '../service/manager.service';
 import { UserResponse } from '../model/user-response.model';
 import {RouterService} from "../service/router.service";
 import {User} from "../model/user.model";
+import {LeaveService} from "../service/leave.service";
 
 @Component({
   selector: 'app-manager',
@@ -15,7 +16,7 @@ export class ManagerComponent implements OnInit {
   managerId: number;
   public page = 'viewMyLeave';
 
-  constructor(private managerService: ManagerService,private routerService:RouterService) {
+  constructor(private managerService: ManagerService,private routerService:RouterService, private leaveService:LeaveService) {
       this.userManager = this.routerService.getQueryParams().user;
       this.managerId = this.userManager.id;
   }
@@ -35,6 +36,14 @@ export class ManagerComponent implements OnInit {
       }*/
     );
   }
+
+  public updateEmployeeLeave(){
+      this.leaveService.updateleave()
+
+  }
+
+
+
 
   public navigatePage(page: string){
       this.page = page;
