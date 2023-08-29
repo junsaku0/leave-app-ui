@@ -32,6 +32,6 @@ export class LeaveService{
   }
 
   public updateleave(id: number){
-      return this.leaveRepository.updateLeave(id);
+      // return this.leaveRepository.updateLeave(id);
   }
 }
