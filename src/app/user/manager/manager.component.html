@@ -25,6 +25,9 @@
 
 <div class="content">
   <div class="body">
+<!--      <div class="nameHeader">-->
+<!--          <h2>Welcome {{userManager.name}} !</h2>-->
+<!--      </div>-->
       <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userManager"></app-leave>
 
       <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>

@@ -17,6 +17,10 @@
         </div>
 
         <div class="userSelector">
+            <div class="searchBar">
+                <input type="text" placeholder="Filter by name" #filter>
+                <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+            </div>
             <div class="userItem" *ngFor="let user of userFilter" (click)="showUserPage(user)">
                 {{ user.name }} - ({{ user.role.charAt(0) + user.role.slice(1).toLowerCase() }})
             </div>

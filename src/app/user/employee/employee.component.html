@@ -22,10 +22,9 @@
 
 <div class="container" >
     <div class="body">
-        <div class="employee-name">
-            <h1>Welcome! {{userEmployee.name}}</h1>
-
-        </div>
+<!--        <div class="nameHeader">-->
+<!--            <h2>Welcome {{userEmployee.name}} !</h2>-->
+<!--        </div>-->
         <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
        <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
 
