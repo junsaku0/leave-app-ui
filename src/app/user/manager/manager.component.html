@@ -9,11 +9,10 @@
   <div class="content">
     <h1>Welcome, Manager {{ userManager.name }}!</h1>
       <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userManager"></app-leave>
-<!--      <app-my-leave *ngIf="page == 'viewMyLeave'"> </app-my-leave>-->
-      <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="managerId"></app-my-leave>
+
+      <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
 
       <app-view-my-employee-leave *ngIf="page == 'viewMyEmployeeLeave'" [managerId]="managerId"></app-view-my-employee-leave>
-
 
   </div>
 </div>

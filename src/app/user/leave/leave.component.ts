@@ -1,8 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
 import {RouterService} from "../service/router.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {LeaveDetails} from "../model/leave-details.model";
+import {FullCalendarComponent} from "@fullcalendar/angular";
+import {CalendarOptions, EventClickArg, EventInput} from "@fullcalendar/core";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
 
 @Component({
   selector: 'app-leave',
@@ -13,6 +17,27 @@ export class LeaveComponent implements OnInit{
 
   leaveForm: FormGroup;
   @Input() userDetails: any;
+    public leaveList: any;
+
+
+    public selectedLeave: any;
+    @ViewChild('calendar') calendar!: FullCalendarComponent;
+    calendarOptions: CalendarOptions = {
+        plugins: [dayGridPlugin, interactionPlugin],
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+        },
+        weekends: true,
+        editable: true,
+        selectable: true,
+        selectMirror: true,
+        dayMaxEvents: true,
+        eventClick: this.handleEventClick.bind(this) // Add this line
+    };
+
 
   constructor(private leaveService: LeaveService, public router: RouterService) {
 
@@ -29,6 +54,8 @@ export class LeaveComponent implements OnInit{
 
   }
     ngOnInit(): void {
+        this.fetchLeaveList();
+        this.fetchLeaveEntries();
 
     }
 
@@ -74,5 +101,61 @@ export class LeaveComponent implements OnInit{
 
     }
 
+    private fetchLeaveList() {
+        this.leaveService.fetchAllLeave().subscribe({
+            next: (data: any) => {
+                this.leaveList = data.content;
+                console.log('Retrieve leave list:', data);
+            }
+        });
+    }
 
+
+
+    fetchLeaveEntries(): void {
+        this.leaveService.fetchAllLeave().subscribe((response: any) => {
+            const leaveEntries = response.content;
+            console.log('Leave Entries:', leaveEntries);
+            this.leaveList = leaveEntries;
+            this.calendarOptions.events = this.mapLeaveEntriesToEvents(leaveEntries);
+            const calendarApi = this.calendar.getApi();
+            calendarApi.removeAllEvents();
+            calendarApi.addEventSource(this.calendarOptions.events);
+            calendarApi.render();
+        });
+    }
+
+    showLeaveDetails(leaveEntry: any) {
+        this.selectedLeave = leaveEntry;
+    }
+
+    handleEventClick(info: EventClickArg) {
+        const event = info.event;
+        const startDate = event.start?.toLocaleDateString() || '';
+        const endDate = event.end?.toLocaleDateString() || '';
+        this.selectedLeave = {
+            name: event.title,
+            startDate: startDate,
+            endDate: endDate,
+        };
+    }
+
+
+    private mapLeaveEntriesToEvents(leaveEntries: any[]): EventInput[] {
+        const events: EventInput[] = [];
+
+        if (leaveEntries) {
+            leaveEntries.forEach((leaveEntry: any) => {
+                if (leaveEntry && leaveEntry.name) {
+                    const event: EventInput = {
+                        title: leaveEntry.name,
+                        start: leaveEntry.startDate,
+                        end: leaveEntry.endDate
+                    };
+                    events.push(event);
+                }
+            });
+        }
+        return events;
+    }
 }

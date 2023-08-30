@@ -20,4 +20,12 @@
     <button type="submit" [disabled]="leaveForm.invalid">Submit</button>
 
   </form>
+
+    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+    <div *ngIf="selectedLeave">
+        <h3>Leave Details</h3>
+        <p>Name: {{ selectedLeave.name }}</p>
+        <p>Start Date: {{ selectedLeave.startDate }}</p>
+        <p>End Date: {{ selectedLeave.endDate }}</p>
+    </div>
 </div>

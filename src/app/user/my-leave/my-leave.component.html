@@ -8,6 +8,8 @@
         <th>Total Leave</th>
         <th>Status</th>
         <th>File Date</th>
+        <th>Actions</th>
+
 
     </tr>
     </thead>
@@ -18,6 +20,9 @@
         <td>{{leave.duration}}</td>
         <td>{{leave.status}}</td>
         <td>{{leave.fileDate}}</td>
+        <td>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')">CANCEL</button>
+        </td>
     </tr>
     </tbody>
 </table>

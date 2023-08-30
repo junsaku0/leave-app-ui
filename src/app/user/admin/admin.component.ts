@@ -176,6 +176,17 @@ export class AdminComponent implements OnInit{
         return events;
     }
 
+    public updateEmployeeLeave(leaveId: number, status: any): void {
+        // const updateDetails: LeaveUpdateDetails = {status};
+
+        this.leaveService.updateleave(leaveId, status).subscribe(
+            (response: any) => {
+                // Handle success response here
+                console.log('Leave updated successfully:', response);
+            }
+        );
+    }
+
 
     public showUserPage(user: any) {
         console.log('Navigate to page:', user.role, ' - ',user.name);

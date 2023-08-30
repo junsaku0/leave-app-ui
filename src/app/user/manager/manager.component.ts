@@ -11,11 +11,15 @@ export class ManagerComponent implements OnInit {
   public user: any;
   managerId: number;
   public page = 'viewMyLeave';
+  userId: number;
 
-  constructor(private routerService:RouterService) {
+
+    constructor(private routerService:RouterService) {
       this.userManager = this.routerService.getQueryParams().user;
       this.managerId = this.userManager.id;
-  }
+        this.userId = this.userManager.id
+
+    }
 
   ngOnInit(): void {
   }
