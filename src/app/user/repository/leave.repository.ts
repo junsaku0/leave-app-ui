@@ -46,5 +46,4 @@ public updateLeave(id: number, status: any){
         return this.httpClient.get<any>(getMyLeaveUrl, {headers: this.headers})
     }
 
-
 }

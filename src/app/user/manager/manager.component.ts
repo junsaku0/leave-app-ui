@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {RouterService} from "../service/router.service";
-import {LeaveService} from "../service/leave.service";
 
 @Component({
   selector: 'app-manager',

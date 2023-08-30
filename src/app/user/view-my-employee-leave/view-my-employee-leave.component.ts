@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
 import {RouterService} from "../service/router.service";
 import { Calendar } from '@fullcalendar/core';
-import {LeaveUpdateDetails} from "../model/leave-update-details.model";
 
 
 
