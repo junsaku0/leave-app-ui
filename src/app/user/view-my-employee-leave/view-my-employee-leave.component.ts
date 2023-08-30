@@ -37,7 +37,7 @@ export class ViewMyEmployeeLeaveComponent {
     public updateEmployeeLeave(leaveId: number, status: any): void {
         // const updateDetails: LeaveUpdateDetails = {status};
 
-        this.leaveService.updateleave(leaveId, status).subscribe(
+        this.leaveService.updateLeave(leaveId, status).subscribe(
             (response: any) => {
                 // Handle success response here
                 console.log('Leave updated successfully:', response);

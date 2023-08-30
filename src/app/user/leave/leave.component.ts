@@ -69,7 +69,8 @@ export class LeaveComponent implements OnInit{
     this.leaveService.saveLeave(leaveValue).subscribe({
       next: (data: LeaveDetails) =>
       {
-          alert('Success');
+          alert('Success!');
+          this.leaveForm.reset();
         console.log('Saved leave: ', data);
       }
     });

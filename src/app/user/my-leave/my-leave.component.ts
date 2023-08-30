@@ -16,6 +16,7 @@ export class MyLeaveComponent implements OnInit {
     @Input()managerId!:number;
 
 
+
 constructor(private leaveService: LeaveService, private Http: HttpClient){
 
 }
