@@ -10,10 +10,11 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./my-leave.component.css']
 })
 export class MyLeaveComponent implements OnInit {
-    public myLeaves:any;
+    public myLeaves:any = {};
     @Input() userId!:number;
     @Input() userDetails: any;
     @Input()managerId!:number;
+
 
 constructor(private leaveService: LeaveService, private Http: HttpClient){
 
@@ -37,7 +38,10 @@ constructor(private leaveService: LeaveService, private Http: HttpClient){
                 console.log('Leave updated successfully:', response);
             }
         );
+
     }
+
+
 
 
 

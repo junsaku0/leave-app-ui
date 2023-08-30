@@ -1,17 +1,27 @@
 
 
 .sidebar {
-  width: 200px;
+  width: 250px;
   background-color: #333;
   color: #fff;
-  padding: 20px;
-  height: 100vh;
+  height: 100%;
   position: fixed;
     font-family: sans-serif;
 }
 
+.admin-calendar {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.sidebar h2 {
+    margin: 30px 50px;
+    text-align: center;
+}
+
 .navHead {
     font-weight: bold;
+    padding: 10px 20px;
 }
 
 .sidebar ul {
@@ -21,65 +31,68 @@
 }
 
 .sidebar li {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .sidebar a {
   color: #fff;
   text-decoration: none;
   display: block;
-  padding: 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  padding: 15px 30px;
+    transition: 0.25s all;
+    border-left: 5px solid #333;
 }
 
 .sidebar a:hover {
   background-color: #555;
     cursor: pointer;
+    border-left: 5px solid white;
+    transition: 0.25s all;
 }
 
-
-
-.content {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-    margin: 0;
-}
-
-.header h1 {
-  color: #333;
-  margin: 0;
-  font-size: 24px;
+.sidebar a.active {
+    background-color: #555;
+    border-left: 5px solid #4CAF50;
+    transition: 0.25s all;
 }
 
 .actions button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
+  padding: 20px 30px;
+    width: 100%;
+    margin: 20px 0;
+    text-align: left;
+  background-color: inherit;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    border-left: 5px solid #333;
+    transition: 0.25s all;
 }
 
 .actions button:hover {
-  background-color: #45a049;
+    background-color: #555;
+    cursor: pointer;
+    border-left: 5px solid white;
+    transition: 0.25s all;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .body {
+    height: 100%;
+    width: 100%;
   background-color: #fff;
   padding: 20px;
   border-radius: 4px;
+    font-family: sans-serif;
 }
 
 .formItem {
@@ -139,6 +152,34 @@ th {
 
 tr:hover {
   background-color: #f5f5f5;
+}
+
+tr th:nth-child(1), tr td:nth-child(1) {
+    text-align: center;
+    min-width: 50px;
+}
+
+tr th:nth-child(2), tr td:nth-child(2) {
+    min-width: 200px;
+}
+
+tr th:nth-child(3), tr td:nth-child(3) {
+    min-width: 120px;
+}
+
+tr th:nth-child(4), tr td:nth-child(4) {
+    text-align: center;
+    min-width: 100px;
+}
+
+tr th:nth-child(5), tr td:nth-child(5) {
+    text-align: center;
+    min-width: 150px;
+}
+
+tr th:nth-child(6), tr td:nth-child(6) {
+    text-align: center;
+    min-width: 150px;
 }
 
 .leave-card-container {
@@ -236,5 +277,15 @@ tr:hover {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+.viewLeaves, .createEmployee {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.viewLeaves div, .createEmployeeChild{
+    width: 55%;
 }
 

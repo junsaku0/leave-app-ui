@@ -18,6 +18,7 @@
           <input type="text" id="totalDaysLeave" [value]="calculateTotalDays()" readonly formControlName="totalDaysLeave">
       </div>
     <button type="submit" [disabled]="leaveForm.invalid">Submit</button>
+
   </form>
 
     <full-calendar #calendar [options]="calendarOptions"></full-calendar>

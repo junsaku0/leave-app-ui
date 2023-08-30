@@ -51,7 +51,7 @@ export class LeaveComponent implements OnInit{
 
 
 
-  constructor(private leaveService: LeaveService, public routersService: RouterService) {
+  constructor(private leaveService: LeaveService, public router: RouterService) {
 
   this.leaveForm = new FormGroup<any>({
       userId: new FormControl(''),
@@ -81,6 +81,7 @@ export class LeaveComponent implements OnInit{
     this.leaveService.saveLeave(leaveValue).subscribe({
       next: (data: LeaveDetails) =>
       {
+          alert('Success');
         console.log('Saved leave: ', data);
       }
     });
@@ -90,18 +91,6 @@ export class LeaveComponent implements OnInit{
         const startDate = this.leaveForm.get('startDate')?.value;
         const endDate = this.leaveForm.get('endDate')?.value;
 
-        /*      if (startDate && endDate) {
-                  const start = new Date(startDate);
-                  const end = new Date(endDate);
-
-                  const timeDifference = Math.abs(end.getTime() - start.getTime());
-                  const totalDays = Math.ceil(timeDifference / (1000 * 3600 * 24));
-
-                  return totalDays;
-              }
-              return 0;
-
-          }*/
 
         if (startDate && endDate) {
             const start = new Date(startDate);
@@ -110,7 +99,7 @@ export class LeaveComponent implements OnInit{
             let totalDays = 0;
             let currentDate = new Date(start);
 
-            while (currentDate <= end) {
+            while (currentDate <= end ) {
                 if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
                     totalDays++;
                 }
@@ -139,8 +128,11 @@ export class LeaveComponent implements OnInit{
         this.leaveService.fetchAllLeave().subscribe((response: any) => {
             const leaveEntries = response.content;
             console.log('Leave Entries:', leaveEntries);
+
+            const approvedLeaves = leaveEntries.filter((leaveEntry: any) => leaveEntry.status === 'APPROVED');
+
             this.leaveList = leaveEntries;
-            this.calendarOptions.events = this.mapLeaveEntriesToEvents(leaveEntries);
+            this.calendarOptions.events = this.mapLeaveEntriesToEvents(approvedLeaves);
             const calendarApi = this.calendar.getApi();
             calendarApi.removeAllEvents();
             calendarApi.addEventSource(this.calendarOptions.events);
@@ -181,4 +173,5 @@ export class LeaveComponent implements OnInit{
         }
         return events;
     }
+
 }
