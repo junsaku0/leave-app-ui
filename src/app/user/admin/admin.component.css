@@ -74,6 +74,14 @@
     transition: 0.25s all;
 }
 
+.userSelectorDropdown {
+    margin-bottom: 20px;
+}
+
+.userSelectorDropdown select {
+    border-radius: 0;
+}
+
 .content {
     margin-left: 250px;
     padding: 20px;
@@ -274,13 +282,90 @@ tr th:nth-child(6), tr td:nth-child(6) {
     cursor: pointer;
 }
 
-.viewLeaves, .createEmployee {
+.viewLeaves {
+    width: 100%;
+}
+
+.createEmployee {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.viewLeaves div, .createEmployeeChild{
+.admin-calendar, .createEmployeeChild{
     width: 55%;
+}
+
+.admin-content {
+    display: flex;
+    justify-content: center;
+}
+
+.leaveViewState {
+    position: absolute;
+    right: 5%;
+    border-radius: 10px;
+}
+
+.leaveViewState button {
+    background-color: #333;
+    padding: 15px;
+    color: white;
+    transition: 0.25s all;
+    border: 0;
+}
+
+.leaveViewState button:hover {
+    background-color: #45a049;
+    transition: 0.25s all;
+    cursor: pointer;
+}
+
+.leaveViewState button:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.leaveViewState button:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.leaveViewState button.active {
+    background-color: #45a049;
+}
+
+.admin-table th:nth-child(1), .admin-table td:nth-child(1) {
+    text-align: center;
+    min-width: 50px;
+}
+
+.admin-table th:nth-child(2), .admin-table td:nth-child(2) {
+    min-width: 200px;
+}
+
+.admin-table th:nth-child(3), .admin-table td:nth-child(3) {
+    min-width: 100px;
+    text-align: center;
+}
+
+.admin-table th:nth-child(4), .admin-table td:nth-child(4) {
+    text-align: center;
+    min-width: 100px;
+}
+
+.admin-table th:nth-child(5), .admin-table td:nth-child(5) {
+    text-align: center;
+    min-width: 150px;
+}
+
+.admin-table th:nth-child(6), .admin-table td:nth-child(6) {
+    text-align: left;
+    min-width: 250px;
+}
+
+.admin-table th:nth-child(7), .admin-table td:nth-child(7) {
+    text-align: center;
+    min-width: 150px;
 }
 

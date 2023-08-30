@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {LeaveService} from "../service/leave.service";
 import {RouterService} from "../service/router.service";
 import { Calendar } from '@fullcalendar/core';
@@ -10,7 +10,7 @@ import { Calendar } from '@fullcalendar/core';
   templateUrl: './view-my-employee-leave.component.html',
   styleUrls: ['./view-my-employee-leave.component.css']
 })
-export class ViewMyEmployeeLeaveComponent {
+export class ViewMyEmployeeLeaveComponent implements OnChanges, OnInit {
     public employeeLeaves: any = {};
     public userManager: any;
     @Input() managerId!: number;
@@ -25,6 +25,12 @@ export class ViewMyEmployeeLeaveComponent {
     ngOnInit() {
         this.fetchEmployeeLeaves(this.managerId);
 
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        // this.managerId = changes.currentValue;
+        console.log('changes:', this.managerId)
+        this.fetchEmployeeLeaves(this.managerId);
     }
 
     fetchEmployeeLeaves(managerId: number) {
