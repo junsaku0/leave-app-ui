@@ -1,5 +1,4 @@
 <div class="container">
-
     <div class="sidebar">
     <ul>
         <li><a (click)="navigatePage('applyLeave')">Apply Leave</a></li>
@@ -8,8 +7,9 @@
         </ul>
     </div>
     <div class="body">
-        <h1>Welcome! {{userEmployee.name}}</h1>
-
+        <div class="employee-name">
+            <h1>Welcome! {{userEmployee.name}}</h1>
+        </div>
         <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
        <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
 

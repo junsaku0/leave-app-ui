@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {LeaveRepository} from "../repository/leave.repository";
 import {LeaveDetails} from "../model/leave-details.model";
-import {LeaveUpdateDetails} from "../model/leave-update-details.model";
 
 
 @Injectable({providedIn: 'root'})
@@ -32,7 +31,7 @@ export class LeaveService{
       return this.leaveRepository.getAllLeave();
   }
 
-  public updateleave(id: number, status: any){
+  public updateLeave(id: number, status: any){
       return this.leaveRepository.updateLeave(id, status);
   }
 }
