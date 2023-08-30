@@ -76,7 +76,7 @@ export class EmployeeComponent implements OnInit {
        this.startDate = '';
        this.endDate = '';
        this.reason = '';
-       this.status = '';
+       this.totalLeaveDays = '';
 
     }
 

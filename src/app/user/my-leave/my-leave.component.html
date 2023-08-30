@@ -1,13 +1,14 @@
 
 <table class="first-table">
     <thead>
-
     <tr>
         <th>Date Leave</th>
         <th>Reason</th>
         <th>Total Leave</th>
         <th>Status</th>
         <th>File Date</th>
+        <th>Action</th>
+
 
     </tr>
     </thead>
@@ -18,7 +19,12 @@
         <td>{{leave.duration}}</td>
         <td>{{leave.status}}</td>
         <td>{{leave.fileDate}}</td>
+        <td>
+            <button routerLink="/applyLeave/employee" >Edit</button>
+            <button>Cancel</button>
+        </td>
     </tr>
     </tbody>
 </table>
 <div> <button routerLink="/user">Back</button></div>
+

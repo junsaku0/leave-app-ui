@@ -4,14 +4,13 @@ table{
     margin-bottom: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 7px;
 }
 h3{
     padding: 1rem 1rem;
 }
 button{
-    padding: 0.75rem 0.75rem;
-    margin-top: 0.75rem;
+    padding: 5px 5px;
     color: white;
     background-color: cornflowerblue;
     border: solid 1px;
@@ -25,8 +24,8 @@ th, td{
 }
 tr{
     background-color: lightgray;
-    border: 1px solid;
-    border-radius: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 th{
     font-weight: bold;

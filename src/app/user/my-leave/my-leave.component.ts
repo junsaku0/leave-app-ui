@@ -15,6 +15,7 @@ export class MyLeaveComponent implements OnInit {
     @Input() userDetails: any;
 
 
+
 constructor(private leaveService: LeaveService, private Http: HttpClient){
 
 }
