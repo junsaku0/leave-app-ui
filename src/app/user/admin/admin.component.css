@@ -222,4 +222,19 @@ tr:hover {
 .selected-date {
     margin-top: 20px;
 }
+.accept-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.reject-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
 

@@ -10,37 +10,9 @@
     <h1>Welcome, Manager {{ userManager.name }}!</h1>
       <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userManager"></app-leave>
 
-      <app-my-leave *ngIf="page == 'viewMyLeave'"> </app-my-leave>
+      <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
 
       <app-view-my-employee-leave *ngIf="page == 'viewMyEmployeeLeave'" [managerId]="managerId"></app-view-my-employee-leave>
 
-      <div *ngIf="page == 'viewMyLeave'">
-    <h2>Leave Requests</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>Employee Name</th>
-        <th>Leave Type</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>John Doe</td>
-        <td>Vacation</td>
-        <td>2022-01-01</td>
-        <td>2022-01-05</td>
-        <td>Pending</td>
-        <td>
-          <button>Accept</button>
-          <button>Reject</button>
-        </td>
-      </tr>
-      <!-- Add more rows for other leave requests -->
-      </tbody>
-    </table></div>
   </div>
 </div>

@@ -22,9 +22,8 @@
         <td>{{ leave.status }}</td>
         <td>{{ leave.reason }}</td>
         <td>
-
-            <button class="accept-button" (click)="updateEmployeeLeave(leave.id, 'APPROVED')">Accept</button>
-            <button class="reject-button" (click)="updateEmployeeLeave(leave.id, 'REJECTED')">Reject</button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'APPROVED')">Accept</button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="reject-button" (click)="updateEmployeeLeave(leave.id, 'REJECTED')">Reject</button>
         </td>
     </tr>
     </tbody>
