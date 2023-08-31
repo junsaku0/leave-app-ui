@@ -1,17 +1,45 @@
 
-<div class="container" >
-    <div  class="sidebar">
-    <ul>
-        <li><a (click)="navigatePage('applyLeave')">Apply Leave</a></li>
-        <li><a (click)="navigatePage('viewMyLeave')">View My Leave</a></li>
-        <li><a routerLink="/user"> ⇐ &nbsp; Back</a></li>
-    </ul>
+<div class="sidebar">
+    <h2>LeaveApp</h2>
+    <br />
+    <div class="userSelectorDropdown">
+        <select (ngModelChange)="showUserPage($event)" [ngModel]="selectedUser">
+            <option value="undefined" disabled selected hidden>{{ userEmployee.name }} ({{ userEmployee.role.charAt(0) + userEmployee.role.slice(1).toLowerCase() }})</option>
+            <option *ngFor="let user of userList" [ngValue]="user">{{ user.name }} ({{ user.role.charAt(0) + user.role.slice(1).toLowerCase() }})</option>
+        </select>
     </div>
-    <div class="body">
-        <div class="employee-name">
-            <h1>Welcome! <span class="header-name">{{userEmployee.name}}! </span> </h1>
+    <ul>
+        <li class="navHead">Leave</li>
+        <li><a (click)="showContent('viewMyLeave')" [ngClass]="{'active': page === 'viewMyLeave'}">View My Leaves</a></li>
+        <li><a (click)="showContent('applyLeave')" [ngClass]="{'active': page === 'applyLeave'}">Apply Leave</a></li>
+    </ul>
 
-        </div>
+
+    <div class="actions">
+        <button routerLink="user">&#8656; &nbsp; Back</button>
+    </div>
+</div>
+
+<div class="container" >
+
+<!--    <div  class="sidebar">-->
+<!--    <ul>-->
+<!--        <li><a (click)="navigatePage('applyLeave')">Apply Leave</a></li>-->
+<!--        <li><a (click)="navigatePage('viewMyLeave')">View My Leave</a></li>-->
+<!--        <li><a routerLink="/user"> ⇐ &nbsp; Back</a></li>-->
+<!--    </ul>-->
+<!--    </div>-->
+<!--    <div class="body">-->
+<!--        <div class="employee-name">-->
+<!--            <h1>Welcome! <span class="header-name">{{userEmployee.name}}! </span> </h1>-->
+
+<!--        </div>-->
+
+    <div class="body">
+<!--        <div class="nameHeader">-->
+<!--            <h2>Welcome {{userEmployee.name}} !</h2>-->
+<!--        </div>-->
+
         <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
        <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
 

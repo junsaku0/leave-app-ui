@@ -56,7 +56,6 @@ export class LeaveComponent implements OnInit{
     ngOnInit(): void {
         this.fetchLeaveList();
         this.fetchLeaveEntries();
-
     }
 
   public OnSubmit(){
