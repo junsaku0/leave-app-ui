@@ -1,27 +1,38 @@
-# LeaveAppUi
+# Leave Application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
-## Development server
+## Local Host Server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve --proxy-config proxy.conf.json` for local hosting. Navigate to `http://localhost:4200/`. 
 
-## Code scaffolding
+## Pages
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This application features different pages for admin, managers, and employees having a unified landing page to navigate across pages.
 
-## Build
+### Landing Page
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The landing page allows you to select the specific user page. With functionalities that allow you to filter by role and filter by name.
+In general, all pages besides the landing page can navigate to other pages using a dropdown of the list of users and to gp back to the landing page.
 
-## Running unit tests
+### Admin Page
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The admin page has access to several functionalities such as:
+-> Viewing all Leaves in table or calendar view
+-> View manager leaves and approve/reject them accordingly.
+-> View employees and managers with the functionality to set the total leaves and to reset the respective used leave of each user.
+-> Create employees and set their roles and manager if the user is an employee.
 
-## Running end-to-end tests
+### Manager Page
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The manager page has access to several functionalities such as:
+-> View their personal leave applications with the ability to cancel their application.
+-> Apply for a leave.
+-> View their employees leave and approve or reject them accordingly.
 
-## Further help
+### Employee Page
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The emploee page has access to several functionalities such as:
+-> View their personal leave applications with the ability to cancel their application.
+-> Apply for a leave.
+
