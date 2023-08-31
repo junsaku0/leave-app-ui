@@ -33,3 +33,16 @@
     padding: 5px 10px;
     cursor: pointer;
 }
+h1{
+    text-align: center;
+    margin-top:30px;
+}
+button{
+    padding: 5px 5px;
+    color: white;
+    background-color: cornflowerblue;
+    border: solid 1px;
+    border-radius:5px;
+    cursor: pointer;
+    margin-top: 30px;
+}

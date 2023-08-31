@@ -1,6 +1,8 @@
 import {Component, OnInit,} from '@angular/core';
 import {Router} from "@angular/router";
 import {RouterService} from "../service/router.service";
+import {UserResponse} from "../model/user-response.model";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-employee',
@@ -17,8 +19,12 @@ export class EmployeeComponent implements OnInit {
     reason : string = '';
     userId: number;
 
+    public userList: any;
+    public selectedUser: any = undefined;
 
-    constructor(private routerService:RouterService) {
+
+    constructor(private userService: UserService,
+                private routerService:RouterService) {
         this.userEmployee = this.routerService.getQueryParams().user;
         this.userId = this.userEmployee.id
     }
@@ -76,7 +82,7 @@ export class EmployeeComponent implements OnInit {
        this.startDate = '';
        this.endDate = '';
        this.reason = '';
-       this.status = '';
+       this.totalLeaveDays = '';
 
     }
 
@@ -85,8 +91,32 @@ export class EmployeeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.fetchUserList();
     }
-    public navigatePage(page: string) {
+    public showContent(page: string) {
         this.page = page;
     }
+
+    public showUserPage(user: any) {
+        console.log('Navigate to page:', user.role, ' - ',user.name, '-', user);
+        if (user.role == this.userEmployee.role) {
+            this.userEmployee = user;
+            this.userId = this.userEmployee.id;
+        }
+        const pageUrl = '/user/' + user.role.toLowerCase();
+        this.routerService.navigate(pageUrl, {'user': user});
+    }
+
+    public fetchUserList() {
+        this.userService.fetchAllUsers()
+            .subscribe({
+                next: (data: UserResponse) =>
+                {
+                    console.log('Response:', data);
+                    this.userList = data;
+                }
+            });
+    }
+
+    protected readonly undefined = undefined;
 }

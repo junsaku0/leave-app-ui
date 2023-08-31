@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit{
   public managerUserList: any;
 
   public userList: any;
-  public userDropdownState = false;
+  public selectedUser: any = undefined;
 
   public managerList: any;
   public employeeList: any;
@@ -31,6 +31,7 @@ export class AdminComponent implements OnInit{
   public selectedRole: any;
   public currentContent: any;
   public selectedLeave: any;
+  public leaveView = 'table';
 
     @ViewChild('calendar') calendar!: FullCalendarComponent;
     calendarOptions: CalendarOptions = {
@@ -70,6 +71,7 @@ export class AdminComponent implements OnInit{
         this.fetchEmployeeList();
         this.fetchLeaveList();
         this.fetchLeaveEntries();
+        this.fetchUserList();
     }
 
   public onSubmit() {
@@ -183,19 +185,35 @@ export class AdminComponent implements OnInit{
     public updateEmployeeLeave(leaveId: number, status: any): void {
         // const updateDetails: LeaveUpdateDetails = {status};
 
-        this.leaveService.updateleave(leaveId, status).subscribe(
+        this.leaveService.updateLeave(leaveId, status).subscribe(
             (response: any) => {
                 // Handle success response here
                 console.log('Leave updated successfully:', response);
+                this.fetchLeaveList();
             }
         );
     }
 
 
     public showUserPage(user: any) {
-        console.log('Navigate to page:', user.role, ' - ',user.name);
+        console.log('Navigate to page:', user.role, ' - ',user.name, '-', user);
         const pageUrl = '/user/' + user.role.toLowerCase();
         this.routerService.navigate(pageUrl, {'user': user});
+    }
+
+    public fetchUserList() {
+        this.userService.fetchAllUsers()
+            .subscribe({
+                next: (data: UserResponse) =>
+                {
+                    console.log('Response:', data);
+                    this.userList = data;
+                }
+            });
+    }
+
+    public setLeaveView(view: string) {
+      this.leaveView = view;
     }
 
     }

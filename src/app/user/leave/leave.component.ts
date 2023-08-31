@@ -38,17 +38,7 @@ export class LeaveComponent implements OnInit{
         eventClick: this.handleEventClick.bind(this) // Add this line
     };
 
-
-
-
-
-
-
-
-
-
-
-
+    today = new Date().toISOString().split('T')[0];
 
 
   constructor(private leaveService: LeaveService, public router: RouterService) {
@@ -81,7 +71,8 @@ export class LeaveComponent implements OnInit{
     this.leaveService.saveLeave(leaveValue).subscribe({
       next: (data: LeaveDetails) =>
       {
-          alert('Success');
+          alert('Success!');
+          this.leaveForm.reset();
         console.log('Saved leave: ', data);
       }
     });

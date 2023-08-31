@@ -1,14 +1,13 @@
 
 <table class="first-table">
     <thead>
-
     <tr>
         <th>Date Leave</th>
         <th>Reason</th>
         <th>Total Leave</th>
         <th>Status</th>
         <th>File Date</th>
-        <th>Actions</th>
+        <th>Action</th>
 
 
     </tr>
@@ -20,15 +19,15 @@
         <td>{{leave.duration}}</td>
         <td>{{leave.status}}</td>
         <td>{{leave.fileDate}}</td>
-
         <td>
             <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')">CANCEL</button>
         </td>
-
-
-
-
+        <td>
+            <button routerLink="/applyLeave/employee" >Edit</button>
+<!--            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')">CANCEL</button>-->
+        </td>
     </tr>
     </tbody>
 </table>
 <div> <button routerLink="/user">Back</button></div>
+

@@ -1,50 +1,34 @@
-<div class="container">
 
-    <div class="sidebar">
-    <ul>
-        <li><a (click)="navigatePage('applyLeave')">Apply Leave</a></li>
-        <li><a (click)="navigatePage('viewMyLeave')">View My Leave</a></li>
-<!--        <li><a (click)="navigatePage('viewLeaveBalance')">View Balance Leave </a></li>-->
-        </ul>
+<div class="sidebar">
+    <h2>LeaveApp</h2>
+    <br />
+    <div class="userSelectorDropdown">
+        <select (ngModelChange)="showUserPage($event)" [ngModel]="selectedUser">
+            <option value="undefined" disabled selected hidden>{{ userEmployee.name }} ({{ userEmployee.role.charAt(0) + userEmployee.role.slice(1).toLowerCase() }})</option>
+            <option *ngFor="let user of userList" [ngValue]="user">{{ user.name }} ({{ user.role.charAt(0) + user.role.slice(1).toLowerCase() }})</option>
+        </select>
     </div>
-    <div class="body">
-        <h1>Welcome! {{userEmployee.name}}</h1>
+    <ul>
+        <li class="navHead">Leave</li>
+        <li><a (click)="showContent('viewMyLeave')" [ngClass]="{'active': page === 'viewMyLeave'}">View My Leaves</a></li>
+        <li><a (click)="showContent('applyLeave')" [ngClass]="{'active': page === 'applyLeave'}">Apply Leave</a></li>
+    </ul>
 
+
+    <div class="actions">
+        <button routerLink="user">&#8656; &nbsp; Back</button>
+    </div>
+</div>
+
+<div class="container" >
+    <div class="body">
+        <div class="employee-name">
+            <h1>Welcome! {{userEmployee.name}}</h1>
+
+        </div>
         <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
        <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
 
-        <!--        <table class="first-table">-->
-        <!--            <thead>-->
-        <!--            <tr>-->
-        <!--                <th>Start Date</th>-->
-        <!--                <th>End Date</th>-->
-        <!--                <th>Reason</th>-->
-        <!--                <th>Earned Leave</th>-->
-        <!--                <th> Total Leave Days</th>-->
-        <!--                <th>Status</th>-->
-        <!--                <th>Manager</th>-->
-        <!--            </tr>-->
-        <!--            </thead>-->
-        <!--            <tbody>-->
-        <!--            <tr>-->
-        <!--                <td ><input type="date" [(ngModel)]="startDate" (ngModelChange)="employeeTotalDays()"></td>-->
-        <!--                <td><input type="date" [(ngModel)]="endDate" (ngModelChange)="employeeTotalDays()"></td>-->
-        <!--                <td >-->
-        <!--                    <select [(ngModel)]="reason" (ngModelChange)="leaveReason()">-->
-        <!--                        <Option value="Please select" disabled>Please select</Option>-->
-        <!--                        <Option value="Vacation Leave">Vacation Leave</Option>-->
-        <!--                        <Option value="Sick Leave">Sick Leave</Option>-->
-        <!--                    </select>-->
-        <!--                </td>-->
-        <!--                <td> 0</td>-->
-        <!--                <td>{{totalLeaveDays}}</td>-->
-        <!--                <td>{{status}}</td>-->
-        <!--                <td>Ernest</td>-->
-        <!--            </tr>-->
-        <!--            </tbody>-->
-        <!--        </table>-->
-        <!--        <button type="submit" (click)="applyLeave()">Apply Leave</button>-->
-        <!--        <button>Cancel</button>-->
     </div>
 </div>
 
