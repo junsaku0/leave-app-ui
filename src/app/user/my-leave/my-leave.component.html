@@ -8,7 +8,7 @@
         <th>Status</th>
         <th>Duration</th>
         <th>Action</th>
-        <th>Total Leave Balance</th>
+
 
 
     </tr>
@@ -23,12 +23,13 @@
         <td>{{leave.duration}}</td>
 
         <td>
-            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" [routerLink]="['/user/leave']"><span class="button-edit" >Edit</span></button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" [routerLink]="['/user/leave']"><span class="button-edit" >EDIT</span></button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')"><span class="button-cancel">CANCEL</span></button>
         </td>
-        <td></td>
-        <td>
-            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')">CANCEL</button>
-        </td>
+
+
+
+
 
 
 
