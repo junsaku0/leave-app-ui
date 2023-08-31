@@ -1,4 +1,4 @@
-
+<div class={{userId}}> "Total Leave"</div>
 <table class="first-table">
     <thead>
     <tr>
@@ -24,7 +24,7 @@
 
         <td>
             <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" [routerLink]="['/user/leave']"><span class="button-edit" >EDIT</span></button>
-            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')"><span class="button-cancel">CANCEL</span></button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="reject-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')"><span class="button-cancel">CANCEL</span></button>
         </td>
 
 
