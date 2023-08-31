@@ -3,11 +3,11 @@
   <form [formGroup]="leaveForm" (ngSubmit)="OnSubmit()">
     <div class="form-group">
       <label for="startDate">Start Date:</label>
-      <input type="date" id="startDate" formControlName="startDate">
+      <input type="date" id="startDate" formControlName="startDate" [min]="today">
     </div>
     <div class="form-group">
       <label for="endDate">End Date:</label>
-      <input type="date" id="endDate" formControlName="endDate">
+      <input type="date" id="endDate" formControlName="endDate" [min]="today">
     </div>
     <div class="form-group">
       <label for="reason">Reason:</label>

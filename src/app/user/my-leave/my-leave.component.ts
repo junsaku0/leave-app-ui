@@ -26,6 +26,7 @@ constructor(private leaveService: LeaveService, private Http: HttpClient){
     ngOnInit(): void {
 
         this.fetchMyLeave(this.userId)
+
     }
 
 
@@ -43,11 +44,10 @@ constructor(private leaveService: LeaveService, private Http: HttpClient){
                 console.log('Leave updated successfully:', response);
             }
         );
+
+
+
     }
-
-
-
-
 
 
 }
