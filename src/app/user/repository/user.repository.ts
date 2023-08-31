@@ -55,5 +55,10 @@ export class UserRepository {
         return this.httpClient.get<any>(getEmployeesUrl, {headers: this.headers});
     }
 
+    public updateUserLeaveDetails(id: any, userLeaveDetails: any): Observable<any> {
+      const getUserUrl = this.baseUrl + '/' + id;
+      return this.httpClient.put<any>(getUserUrl, userLeaveDetails, {headers: this.headers});
+    }
+
 
 }

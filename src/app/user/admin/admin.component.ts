@@ -28,6 +28,11 @@ export class AdminComponent implements OnInit{
   public employeeList: any;
   public leaveList: any;
 
+  public userToEdit: any;
+  public editUserPage: any;
+  public editThisUser = false;
+  public userLeaveForm: any;
+
   public selectedRole: any;
   public currentContent: any;
   public selectedLeave: any;
@@ -210,6 +215,39 @@ export class AdminComponent implements OnInit{
 
     public setLeaveView(view: string) {
       this.leaveView = view;
+    }
+
+    public editUserLeaveDetails(user: any, editPage: string) {
+        this.editThisUser = true;
+        this.userToEdit = user;
+        this.editUserPage = editPage;
+        this.userLeaveForm = new FormGroup<any>( {
+            totalLeave: new FormControl(''),
+            earnedLeave: new FormControl('')
+        });
+        if (editPage == 'edit') {
+            this.createUserForm.controls["earnedLeave"].setValue(this.userToEdit.earnedLeave);
+        } else if (editPage == 'reset') {
+            this.createUserForm.controls["totalLeave"].setValue(this.userToEdit.totalLeave);
+            this.createUserForm.controls["earnedLeave"].setValue(0);
+        }
+    }
+
+    public onEditUserLeave() {
+        const formValue = this.userLeaveForm.getRawValue();
+        console.log('edit user leave info:', formValue);
+        this.userService.editUserLeave(this.userToEdit.id, formValue)
+            .subscribe({
+                next: (data) => {
+                    console.log('updated data:', data);
+                    this.editThisUser = false;
+                }
+            });
+
+    }
+
+    public closeEditPage() {
+      this.editThisUser = false;
     }
 
     }
