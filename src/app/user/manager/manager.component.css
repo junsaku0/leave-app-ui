@@ -80,6 +80,9 @@
 
 .userSelectorDropdown select {
     border-radius: 0;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
 }
 
 .content {
@@ -96,6 +99,10 @@
     padding: 20px;
     border-radius: 4px;
     font-family: sans-serif;
+}
+
+.nameHeader {
+    margin: 10px 40px;
 }
 
 .container h1 {
