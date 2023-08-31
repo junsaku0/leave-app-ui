@@ -73,7 +73,7 @@ export class LeaveComponent implements OnInit{
           alert('Success!');
           this.leaveForm.reset();
         console.log('Saved leave: ', data);
-      }
+      },
     });
   }
 

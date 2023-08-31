@@ -55,15 +55,14 @@
     width: 100%;
     margin: 20px 0;
     text-align: left;
-    background-color: inherit;
     color: #fff;
-    border: none;
     cursor: pointer;
     font-size: 16px;
     position: absolute;
     bottom: 0;
+    background-color: inherit;
+    border: 0;
     border-left: 5px solid #333;
-    transition: 0.25s all;
 }
 
 .actions button:hover {
@@ -75,6 +74,7 @@
 
 .userSelectorDropdown {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .userSelectorDropdown select {
@@ -89,7 +89,6 @@
     padding: 20px;
     display: flex;
     justify-content: center;
-    background-color: #edf2f7;
 }
 
 .body {
@@ -104,11 +103,11 @@
 table{
     width: 100%;
     border-radius: 2px;
+    border-collapse: collapse;
 }
  th{
      border: 1px solid;
      border-radius: 5px;
-     background-color: cornflowerblue;
      padding-top:1rem;
      padding-bottom:1rem;
      color:white;
@@ -128,29 +127,25 @@ table{
 }
 button{
     margin-top:2rem;
-    border: 1px solid;
-    background-color: cornflowerblue;
+    border: none;
+    background-color: #333333;
     border-radius: 5px;
     color: white;
     padding: 0.5rem 0.5rem;
     &:hover{
-        background-color: dodgerblue;
         cursor: pointer;
     }
 }
-li{
-text-decoration: none;
-    &:hover{
-        cursor: pointer;
-    }
 
-}
 h1{
     text-align: center;
     margin-bottom: 3rem;
-    background-color: cornflowerblue;
     padding: 0.5rem 0.5rem;
     color:#edf2f7ff;
+}
+.header-name{
+    margin-left: 0.5rem;
+    font-size: 25px;
 }
 .container {
     display:flex;

@@ -74,7 +74,7 @@
 
       <div class="editUser" *ngIf="editThisUser">
           <h2 *ngIf="editUserPage == 'edit'">Edit Total Leave</h2>
-          <h2 *ngIf="editUserPage == 'reset'">Reset Earned Leave</h2>
+          <h2 *ngIf="editUserPage == 'reset'">Reset Used Leave</h2>
           <label>Name:</label>
           <input type="text" [value]="userToEdit.name" readonly />
           <form [formGroup]="userLeaveForm" (ngSubmit)="onEditUserLeave()">
@@ -83,7 +83,7 @@
               <div class="editActions">
                   <button type="submit">
                       <p *ngIf="editUserPage == 'edit'">Submit</p>
-                      <p *ngIf="editUserPage == 'reset'">Reset Earned Leave</p>
+                      <p *ngIf="editUserPage == 'reset'">Reset Used Leave</p>
                   </button>
                   <button (click)="closeEditPage()">Cancel</button>
               </div>
@@ -101,7 +101,7 @@
                 <th>Name</th>
                 <th>Hire Date</th>
                 <th>Total Leaves</th>
-                <th>Earned Leaves</th>
+                <th>Used Leaves</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -133,7 +133,7 @@
           <th>Name</th>
           <th>Hire Date</th>
           <th>Total Leaves</th>
-          <th>Earned Leaves</th>
+          <th>Used Leaves</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -196,8 +196,8 @@
                       <td>{{ leave.status }}</td>
                       <td>{{ leave.reason }}</td>
                       <td>
-                          <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'APPROVED')">Accept</button>
-                          <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="reject-button" (click)="updateEmployeeLeave(leave.id, 'REJECTED')">Reject</button>
+                          <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'APPROVED')">Accept</button>
+                          <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="reject-button" (click)="updateEmployeeLeave(leave.id, 'REJECTED')">Reject</button>
                       </td>
                   </tr>
                   </tbody>
@@ -206,4 +206,8 @@
         </div>
       </div>
   </div>
+
+
+
+
 </div>

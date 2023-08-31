@@ -25,7 +25,7 @@ export class UserRepository {
   }
 
   public getUserManager(): Observable<any> {
-    const getUserManagerUrl = this.baseUrl + '/manager';
+    const getUserManagerUrl = 'api/v1/manager';
     return this.httpClient.get<any>(getUserManagerUrl, {headers: this.headers});
   }
 

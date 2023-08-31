@@ -210,6 +210,9 @@ export class AdminComponent implements OnInit{
         const pageUrl = '/user/' + user.role.toLowerCase();
         this.routerService.navigate(pageUrl, {'user': user});
     }
+    refreshPage(): void {
+        location.reload();
+    }
 
     public fetchUserList() {
         this.userService.fetchAllUsers()
@@ -235,21 +238,29 @@ export class AdminComponent implements OnInit{
             earnedLeave: new FormControl('')
         });
         if (editPage == 'edit') {
-            this.createUserForm.controls["earnedLeave"].setValue(this.userToEdit.earnedLeave);
+            this.userLeaveForm.controls["earnedLeave"].setValue(this.userToEdit.earnedLeave);
         } else if (editPage == 'reset') {
-            this.createUserForm.controls["totalLeave"].setValue(this.userToEdit.totalLeave);
-            this.createUserForm.controls["earnedLeave"].setValue(0);
+            this.userLeaveForm.controls["totalLeave"].setValue(this.userToEdit.totalLeave);
+            this.userLeaveForm.controls["earnedLeave"].setValue(0);
         }
     }
 
     public onEditUserLeave() {
         const formValue = this.userLeaveForm.getRawValue();
+        if (this.editUserPage == 'edit') {
+            this.userLeaveForm.controls["earnedLeave"].setValue(this.userToEdit.earnedLeave);
+        } else if (this.editUserPage == 'reset') {
+            this.userLeaveForm.controls["totalLeave"].setValue(this.userToEdit.totalLeave);
+            this.userLeaveForm.controls["earnedLeave"].setValue(0);
+        }
         console.log('edit user leave info:', formValue);
         this.userService.editUserLeave(this.userToEdit.id, formValue)
             .subscribe({
                 next: (data) => {
                     console.log('updated data:', data);
                     this.editThisUser = false;
+                    this.fetchManagerList();
+                    this.fetchEmployeeList();
                 }
             });
 
