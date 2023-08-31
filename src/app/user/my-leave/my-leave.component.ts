@@ -32,7 +32,7 @@ constructor(private leaveService: LeaveService, private Http: HttpClient){
 
     ngOnChanges(changes: SimpleChanges) {
         console.log('changes:', this.userId);
-        this.fetchMyLeave(this.userId)
+        this.fetchMyLeave(this.userId);
     }
 
     public updateEmployeeLeave(leaveId: number, status: any): void {
@@ -42,6 +42,7 @@ constructor(private leaveService: LeaveService, private Http: HttpClient){
             (response: any) => {
                 // Handle success response here
                 console.log('Leave updated successfully:', response);
+                this.fetchMyLeave(this.userId);
             }
         );
 

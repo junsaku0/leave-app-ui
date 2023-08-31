@@ -86,6 +86,11 @@ export class AdminComponent implements OnInit{
        .subscribe({
            next: (data) => {
                console.log('saved data:', data);
+               alert('User created!');
+               this.createUserForm.reset();
+               this.fetchUserList();
+               this.fetchManagerList();
+               this.fetchEmployeeList();
            }
        });
   }

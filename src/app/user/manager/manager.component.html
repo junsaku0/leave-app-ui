@@ -16,14 +16,6 @@
         <li class="navHead">Employee</li>
         <li><a (click)="navigatePage('viewMyEmployeeLeave')" [ngClass]="{'active': page === 'viewMyEmployeeLeave'}">View My Employee Leave</a></li>
     </ul>
-  </div>
-  <div class="content">
-    <h1>Welcome, Manager {{ userManager.name }}!</h1>
-      <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userManager"></app-leave>
-
-
-
-
     <div class="actions">
         <button routerLink="user">&#8656; &nbsp; Back</button>
     </div>
