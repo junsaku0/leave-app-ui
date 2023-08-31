@@ -9,6 +9,7 @@ import {MyLeaveComponent} from "./user/my-leave/my-leave.component";
 
 
 import {ViewMyEmployeeLeaveComponent} from "./user/view-my-employee-leave/view-my-employee-leave.component";
+import {LeaveComponent} from "./user/leave/leave.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'manager', component: ManagerComponent },
         {path: 'employee', component: EmployeeComponent},
         {path: 'myLeave', component: MyLeaveComponent},
-        {path: 'viewMyEmployee', component: ViewMyEmployeeLeaveComponent}
+      {path: 'viewMyEmployee', component: ViewMyEmployeeLeaveComponent},
+      {path: 'leave', component: LeaveComponent}
 
 
 

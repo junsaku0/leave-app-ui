@@ -10,6 +10,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventInput } from '@fullcalendar/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
+import {error} from "jquery";
 
 @Component({
   selector: 'app-admin',
@@ -79,6 +80,8 @@ export class AdminComponent implements OnInit{
        .subscribe({
            next: (data) => {
                console.log('saved data:', data);
+               alert('Successfully Created');
+               this.createUserForm.reset()
            }
        });
   }
@@ -179,7 +182,7 @@ export class AdminComponent implements OnInit{
     public updateEmployeeLeave(leaveId: number, status: any): void {
         // const updateDetails: LeaveUpdateDetails = {status};
 
-        this.leaveService.updateleave(leaveId, status).subscribe(
+        this.leaveService.updateLeave(leaveId, status).subscribe(
             (response: any) => {
                 // Handle success response here
                 console.log('Leave updated successfully:', response);
@@ -192,6 +195,9 @@ export class AdminComponent implements OnInit{
         console.log('Navigate to page:', user.role, ' - ',user.name);
         const pageUrl = '/user/' + user.role.toLowerCase();
         this.routerService.navigate(pageUrl, {'user': user});
+    }
+    refreshPage(): void {
+        location.reload();
     }
 
     }

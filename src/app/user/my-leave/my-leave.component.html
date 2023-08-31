@@ -2,29 +2,32 @@
 <table class="first-table">
     <thead>
     <tr>
-        <th>Date Leave</th>
         <th>Reason</th>
-        <th>Total Leave</th>
-        <th>Status</th>
+        <th>DateLeave</th>
         <th>File Date</th>
+        <th>Status</th>
+        <th>Duration</th>
         <th>Action</th>
+        <th>Total Leave Balance</th>
 
 
     </tr>
     </thead>
     <tbody>
     <tr *ngFor = "let leave of myLeaves.content" >
-        <td>{{leave.startDate + " - " + leave.endDate}}</td>
         <td>{{leave.reason}}</td>
-        <td>{{leave.duration}}</td>
-        <td>{{leave.status}}</td>
+        <td>{{leave.startDate + " - " + leave.endDate}}</td>
         <td>{{leave.fileDate}}</td>
+        <td>{{leave.status}}</td>
+        <td>{{leave.duration}}</td>
+
         <td>
-            <button routerLink="/applyLeave/employee" >Edit</button>
-            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')">CANCEL</button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" [routerLink]="['/user/leave']"><span class="button-edit" >Edit</span></button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')" ><span class="button-cancel">CANCEL</span></button>
         </td>
+        <td></td>
     </tr>
     </tbody>
 </table>
-<div> <button routerLink="/user">Back</button></div>
+
 

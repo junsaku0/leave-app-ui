@@ -4,11 +4,12 @@
     <ul>
         <li><a (click)="navigatePage('applyLeave')">Apply Leave</a></li>
         <li><a (click)="navigatePage('viewMyLeave')">View My Leave</a></li>
+        <li><a routerLink="/user"> ⇐ &nbsp; Back</a></li>
     </ul>
     </div>
     <div class="body">
         <div class="employee-name">
-            <h1>Welcome! {{userEmployee.name}}</h1>
+            <h1>Welcome! <span class="header-name">{{userEmployee.name}}! </span> </h1>
 
         </div>
         <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
