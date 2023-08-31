@@ -10,7 +10,7 @@
   <ul>
     <li class="navHead">Leave</li>
     <li><a (click)="showContent('viewLeaves')" [ngClass]="{'active': currentContent === 'viewLeaves'}">View Leaves</a></li>
-    <li><a (click)="showContent('pendingLeaves')" [ngClass]="{'active': currentContent === 'pendingLeaves'}">Pending Leaves</a></li>
+    <li><a (click)="showContent('pendingLeaves')" [ngClass]="{'active': currentContent === 'pendingLeaves'}">View Manager Leaves</a></li>
 
     <li class="navHead">Employee</li>
       <li><a (click)="showContent('viewManagers')" [ngClass]="{'active': currentContent === 'viewManagers'}">View Managers</a></li>
@@ -72,6 +72,24 @@
     </div>
     </div>
 
+      <div class="editUser" *ngIf="editThisUser">
+          <h2 *ngIf="editUserPage == 'edit'">Edit Total Leave</h2>
+          <h2 *ngIf="editUserPage == 'reset'">Reset Earned Leave</h2>
+          <label>Name:</label>
+          <input type="text" [value]="userToEdit.name" readonly />
+          <form [formGroup]="userLeaveForm" (ngSubmit)="onEditUserLeave()">
+              <label *ngIf="editUserPage == 'edit'">New Total Leave:</label>
+              <input *ngIf="editUserPage == 'edit'" type="number" formControlName="totalLeave" />
+              <div class="editActions">
+                  <button type="submit">
+                      <p *ngIf="editUserPage == 'edit'">Submit</p>
+                      <p *ngIf="editUserPage == 'reset'">Reset Earned Leave</p>
+                  </button>
+                  <button (click)="closeEditPage()">Cancel</button>
+              </div>
+          </form>
+      </div>
+
     <div *ngIf="currentContent === 'viewEmployee'">
         <h2>Employee List</h2>
         <br/>
@@ -95,13 +113,14 @@
                 <td>{{ employee.totalLeaves }}</td>
                 <td>{{ employee.earnedLeave }}</td>
                 <td>
-                    <button>Edit</button>
-                    <button>Reset</button>
+                    <button (click)="editUserLeaveDetails(employee, 'edit')">Edit</button>
+                    <button (click)="editUserLeaveDetails(employee, 'reset')">Reset</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+
 
     <div *ngIf="currentContent === 'viewManagers'">
       <h2>Manager List</h2>
@@ -126,8 +145,8 @@
           <td>{{ manager.totalLeaves }}</td>
           <td>{{ manager.earnedLeave }}</td>
             <td>
-                <button>Edit</button>
-                <button>Reset</button>
+                <button (click)="editUserLeaveDetails(manager, 'edit')">Edit</button>
+                <button (click)="editUserLeaveDetails(manager, 'reset')">Reset</button>
             </td>
         </tr>
         </tbody>

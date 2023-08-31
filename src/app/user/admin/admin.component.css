@@ -108,6 +108,7 @@
 }
 
 label {
+
   font-weight: bold;
   font-size: 16px;
   display: block;
@@ -126,7 +127,7 @@ select {
   font-size: 16px;
 }
 
-button[type="submit"] {
+.createEmployee button[type="submit"] {
   display: block;
   margin: 0 auto;
   padding: 20px 100px;
@@ -374,3 +375,62 @@ tr th:nth-child(6), tr td:nth-child(6) {
     min-width: 150px;
 }
 
+.editUser {
+    flex: 0.935;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+.editUser input {
+    margin: 10px 0px;
+}
+
+.editUser button {
+    padding: 15px 15px;
+    border: 0;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #333333;
+    color: white;
+}
+
+.editUser button[type='submit'] p{
+    margin: 0;
+}
+
+.editUser button:hover {
+    cursor: pointer;
+    background-color: #45a049;
+}
+
+.editActions {
+    display: flex;
+    justify-content: space-between;
+}
+
+td button {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    transition: 0.25s all;
+}
+
+td button:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+td button:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+td button:hover {
+    background-color: #45a049;
+    cursor: pointer;
+    transition: 0.25s all;
+}

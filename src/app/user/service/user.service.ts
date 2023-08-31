@@ -40,4 +40,8 @@ export class UserService {
         return this.userRepository.getEmployees();
     }
 
+    public editUserLeave(id: any, userLeaveDetails: any) {
+        return this.userRepository.updateUserLeaveDetails(id, userLeaveDetails);
+    }
+
 }
