@@ -1,54 +1,33 @@
-<div class="flex flex-row flex-wrap">
-    <div class="flex align-items-center justify-content-center">
-        <h1>Welcome! Employee Name</h1>
-        <a href="#">View All Leave</a>
+
+<div class="sidebar">
+    <h2>LeaveApp</h2>
+    <br />
+    <div class="userSelectorDropdown">
+        <select (ngModelChange)="showUserPage($event)" [ngModel]="selectedUser">
+            <option value="undefined" disabled selected hidden>{{ userEmployee.name }} ({{ userEmployee.role.charAt(0) + userEmployee.role.slice(1).toLowerCase() }})</option>
+            <option *ngFor="let user of userList" [ngValue]="user">{{ user.name }} ({{ user.role.charAt(0) + user.role.slice(1).toLowerCase() }})</option>
+        </select>
     </div>
+    <ul>
+        <li class="navHead">Leave</li>
+        <li><a (click)="showContent('viewMyLeave')" [ngClass]="{'active': page === 'viewMyLeave'}">View My Leaves</a></li>
+        <li><a (click)="showContent('applyLeave')" [ngClass]="{'active': page === 'applyLeave'}">Apply Leave</a></li>
+    </ul>
 
 
+    <div class="actions">
+        <button routerLink="user">&#8656; &nbsp; Back</button>
+    </div>
+</div>
+
+<div class="container" >
     <div class="body">
-        <table class="first-table">
-            <thead>
-            <tr>
-                <th>Manager</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Reason</th>
-                <th>Time Unit</th>
-                <th>Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Ernest</td>
-                <td>8/22/2023</td>
-                <td>8/25/2023</td>
-                <td>Vacation Leave</td>
-                <td>Full day</td>
-                <td>For Approval</td>
-            </tr>
-            </tbody>
-            <table class="second-table">
-                <thead>
-                <tr>
-                    <th>Earned</th>
-                    <th>Balance</th>
-                </tr>
+<!--        <div class="nameHeader">-->
+<!--            <h2>Welcome {{userEmployee.name}} !</h2>-->
+<!--        </div>-->
 
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Vacation Leave</td>
-                    <td>11.0 Day</td>
-                </tr>
-                </tbody>
-
-            </table>
-
-        </table>
-        <div class="button">
-            <button>Submit</button>
-            <button>Cancel</button>
-        </div>
+        <app-leave *ngIf="page == 'applyLeave'" [userDetails]="userEmployee"></app-leave>
+       <app-my-leave *ngIf="page == 'viewMyLeave'" [userId]="userId"></app-my-leave>
 
     </div>
 </div>

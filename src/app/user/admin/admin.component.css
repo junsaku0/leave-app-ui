@@ -1,43 +1,106 @@
-.content {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f2f2f2;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  height: 100%;
+  position: fixed;
+    font-family: sans-serif;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.admin-calendar {
+    width: 80%;
+    margin: 0 auto;
 }
 
-.header h1 {
-  color: #333;
+.sidebar h2 {
+    margin: 30px 50px;
+    text-align: center;
+}
+
+.navHead {
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
   margin: 0;
-  font-size: 24px;
+}
+
+.sidebar li {
+  margin-bottom: 5px;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 15px 30px;
+    transition: 0.25s all;
+    border-left: 5px solid #333;
+}
+
+.sidebar a:hover {
+  background-color: #555;
+    cursor: pointer;
+    border-left: 5px solid white;
+    transition: 0.25s all;
+}
+
+.sidebar a.active {
+    background-color: #555;
+    border-left: 5px solid #4CAF50;
+    transition: 0.25s all;
 }
 
 .actions button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
+  padding: 20px 30px;
+    width: 100%;
+    margin: 20px 0;
+    text-align: left;
+  background-color: inherit;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    border-left: 5px solid #333;
+    transition: 0.25s all;
 }
 
 .actions button:hover {
-  background-color: #45a049;
+    background-color: #555;
+    cursor: pointer;
+    border-left: 5px solid white;
+    transition: 0.25s all;
+}
+
+.userSelectorDropdown {
+    margin-bottom: 20px;
+}
+
+.userSelectorDropdown select {
+    border-radius: 0;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .body {
+    height: 100%;
+    width: 100%;
   background-color: #fff;
   padding: 20px;
   border-radius: 4px;
+    font-family: sans-serif;
 }
 
 .formItem {
@@ -45,6 +108,7 @@
 }
 
 label {
+
   font-weight: bold;
   font-size: 16px;
   display: block;
@@ -63,7 +127,7 @@ select {
   font-size: 16px;
 }
 
-button[type="submit"] {
+.createEmployee button[type="submit"] {
   display: block;
   margin: 0 auto;
   padding: 20px 100px;
@@ -78,4 +142,295 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #45a049;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+tr th:nth-child(1), tr td:nth-child(1) {
+    text-align: center;
+    min-width: 50px;
+}
+
+tr th:nth-child(2), tr td:nth-child(2) {
+    min-width: 200px;
+}
+
+tr th:nth-child(3), tr td:nth-child(3) {
+    min-width: 120px;
+}
+
+tr th:nth-child(4), tr td:nth-child(4) {
+    text-align: center;
+    min-width: 100px;
+}
+
+tr th:nth-child(5), tr td:nth-child(5) {
+    text-align: center;
+    min-width: 150px;
+}
+
+tr th:nth-child(6), tr td:nth-child(6) {
+    text-align: center;
+    min-width: 150px;
+}
+
+.leave-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.leave-card {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.leave-card-header {
+    margin-bottom: 10px;
+}
+
+.leave-card-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.leave-card-dates {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+.leave-card-body {
+    margin-top: 10px;
+}
+
+.leave-card-reason {
+    font-size: 14px;
+    margin: 0;
+}
+
+
+.calendar {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.days {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.day {
+    width: 40px;
+    text-align: center;
+}
+
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.date {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.selected-date {
+    margin-top: 20px;
+}
+.accept-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.reject-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.viewLeaves {
+    width: 100%;
+}
+
+.createEmployee {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-calendar, .createEmployeeChild{
+    width: 55%;
+}
+
+.admin-content {
+    display: flex;
+    justify-content: center;
+}
+
+.leaveViewState {
+    position: absolute;
+    right: 5%;
+    border-radius: 10px;
+}
+
+.leaveViewState button {
+    background-color: #333;
+    padding: 15px;
+    color: white;
+    transition: 0.25s all;
+    border: 0;
+}
+
+.leaveViewState button:hover {
+    background-color: #45a049;
+    transition: 0.25s all;
+    cursor: pointer;
+}
+
+.leaveViewState button:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.leaveViewState button:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.leaveViewState button.active {
+    background-color: #45a049;
+}
+
+.admin-table th:nth-child(1), .admin-table td:nth-child(1) {
+    text-align: center;
+    min-width: 50px;
+}
+
+.admin-table th:nth-child(2), .admin-table td:nth-child(2) {
+    min-width: 200px;
+}
+
+.admin-table th:nth-child(3), .admin-table td:nth-child(3) {
+    min-width: 100px;
+    text-align: center;
+}
+
+.admin-table th:nth-child(4), .admin-table td:nth-child(4) {
+    text-align: center;
+    min-width: 100px;
+}
+
+.admin-table th:nth-child(5), .admin-table td:nth-child(5) {
+    text-align: center;
+    min-width: 150px;
+}
+
+.admin-table th:nth-child(6), .admin-table td:nth-child(6) {
+    text-align: left;
+    min-width: 250px;
+}
+
+.admin-table th:nth-child(7), .admin-table td:nth-child(7) {
+    text-align: center;
+    min-width: 150px;
+}
+
+.editUser {
+    flex: 0.935;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+.editUser input {
+    margin: 10px 0px;
+}
+
+.editUser button {
+    padding: 15px 15px;
+    border: 0;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #333333;
+    color: white;
+}
+
+.editUser button[type='submit'] p{
+    margin: 0;
+}
+
+.editUser button:hover {
+    cursor: pointer;
+    background-color: #45a049;
+}
+
+.editActions {
+    display: flex;
+    justify-content: space-between;
+}
+
+td button {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    transition: 0.25s all;
+}
+
+td button:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+td button:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+td button:hover {
+    background-color: #45a049;
+    cursor: pointer;
+    transition: 0.25s all;
 }

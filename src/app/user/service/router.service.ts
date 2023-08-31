@@ -18,4 +18,8 @@ export class RouterService {
       return window.history.state.queryParams;
     }
   }
+
+  public navigateToSameRole(queryParams?: any) {
+      return this.router.navigate(['.'], {queryParams: queryParams});
+  }
 }

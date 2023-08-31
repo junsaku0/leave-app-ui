@@ -1,0 +1,36 @@
+<h2>Employee Leaves</h2>
+<table class="my-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Duration</th>
+        <th>File Date</th>
+        <th>Status</th>
+        <th>Reason</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let leave of employeeLeaves.content">
+        <td>{{ leave.name }}</td>
+        <td>{{ leave.startDate }}</td>
+        <td>{{ leave.endDate }}</td>
+        <td>{{ leave.duration }}</td>
+        <td>{{ leave.fileDate }}</td>
+        <td>{{ leave.status }}</td>
+        <td>{{ leave.reason }}</td>
+        <td>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'APPROVED')">Accept</button>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="reject-button" (click)="updateEmployeeLeave(leave.id, 'REJECTED')">Reject</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<div>
+
+</div>

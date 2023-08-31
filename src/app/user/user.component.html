@@ -1,26 +1,29 @@
 <div class="landingPage">
+    <h1>Leave Application</h1>
+    <div class="selection">
+        <div class="roleSelector">
+            <button [ngClass]="{'active': selectedRole === 'all'}" (click)="selectRole('all')">
+                <p>All</p>
+            </button>
+            <button [ngClass]="{'active': selectedRole === 'admin'}" (click)="selectRole('admin')">
+                <p>Admin</p>
+            </button>
+            <button [ngClass]="{'active': selectedRole === 'manager'}" (click)="selectRole('manager')">
+                <p>Manager</p>
+            </button>
+            <button [ngClass]="{'active': selectedRole === 'employee'}" (click)="selectRole('employee')">
+                <p>Employee</p>
+            </button>
+        </div>
 
-  <div class="userSelector">
-    <h1>Select User</h1>
-
-    <div class="user" id="admins">
-      <div class="userAdmin" *ngFor="let admin of adminList" (click)="showUserPage(admin)">
-        <p>{{ this.admin.id }} - {{ this.admin.name }} - {{ this.admin.role }}</p>
-      </div>
+        <div class="userSelector">
+            <div class="searchBar">
+                <input type="text" placeholder="Filter by name" #filter>
+                <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+            </div>
+            <div class="userItem" *ngFor="let user of userFilter" (click)="showUserPage(user)">
+                {{ user.name }} - ({{ user.role.charAt(0) + user.role.slice(1).toLowerCase() }})
+            </div>
+        </div>
     </div>
-
-    <div class="user" id="managers">
-      <div class="userAdmin" *ngFor="let manager of managerList" (click)="showUserPage(manager)">
-        <p>{{ this.manager.id }} - {{ this.manager.name }} - {{ this.manager.role }}</p>
-      </div>
-    </div>
-
-    <div class="user" id="employees">
-      <div class="userAdmin" *ngFor="let employee of employeeList" (click)="showUserPage(employee)">
-        <p>{{ this.employee.id }} - {{ this.employee.name }} - {{ this.employee.role }}</p>
-      </div>
-    </div>
-
-
-  </div>
 </div>
