@@ -18,14 +18,22 @@
         <td>{{leave.reason}}</td>
         <td>{{leave.startDate + " - " + leave.endDate}}</td>
         <td>{{leave.fileDate}}</td>
+
         <td>{{leave.status}}</td>
         <td>{{leave.duration}}</td>
 
         <td>
             <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" [routerLink]="['/user/leave']"><span class="button-edit" >Edit</span></button>
-            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')" ><span class="button-cancel">CANCEL</span></button>
         </td>
         <td></td>
+        <td>
+            <button *ngIf="leave.status !== 'APPROVED' && leave.status !== 'REJECTED' && leave.status !== 'CANCELLED'" class="accept-button" (click)="updateEmployeeLeave(leave.id, 'CANCELLED')">CANCEL</button>
+        </td>
+
+
+
+
+
     </tr>
     </tbody>
 </table>

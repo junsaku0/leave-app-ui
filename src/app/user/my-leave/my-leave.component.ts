@@ -48,8 +48,6 @@ constructor(private leaveService: LeaveService,
 
     public updateEmployeeLeave(leaveId: number, status: any): void {
         // const updateDetails: LeaveUpdateDetails = {status};
-
-
         this.leaveService.updateLeave(leaveId, status).subscribe(
             (response: any) => {
                 // Handle success response here
@@ -57,6 +55,7 @@ constructor(private leaveService: LeaveService,
                 alert('Leave cancelled successfully');
             }
         );
+
     }
 
 

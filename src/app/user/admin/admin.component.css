@@ -9,6 +9,11 @@
     font-family: sans-serif;
 }
 
+.admin-calendar {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .sidebar h2 {
     margin: 30px 50px;
     text-align: center;

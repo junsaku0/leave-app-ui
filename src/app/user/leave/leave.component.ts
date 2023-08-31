@@ -116,8 +116,11 @@ export class LeaveComponent implements OnInit{
         this.leaveService.fetchAllLeave().subscribe((response: any) => {
             const leaveEntries = response.content;
             console.log('Leave Entries:', leaveEntries);
+
+            const approvedLeaves = leaveEntries.filter((leaveEntry: any) => leaveEntry.status === 'APPROVED');
+
             this.leaveList = leaveEntries;
-            this.calendarOptions.events = this.mapLeaveEntriesToEvents(leaveEntries);
+            this.calendarOptions.events = this.mapLeaveEntriesToEvents(approvedLeaves);
             const calendarApi = this.calendar.getApi();
             calendarApi.removeAllEvents();
             calendarApi.addEventSource(this.calendarOptions.events);
@@ -158,4 +161,5 @@ export class LeaveComponent implements OnInit{
         }
         return events;
     }
+
 }
